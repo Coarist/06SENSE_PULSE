@@ -1,0 +1,115 @@
+
+# 1 "task0.c"
+
+# 13 "D:\Program Files (x86)\Microchip\xc8\v1.42\include\stdint.h"
+typedef signed char int8_t;
+
+# 20
+typedef signed int int16_t;
+
+# 38
+typedef signed long int int32_t;
+
+# 45
+typedef unsigned char uint8_t;
+
+# 51
+typedef unsigned int uint16_t;
+
+# 67
+typedef unsigned long int uint32_t;
+
+# 75
+typedef signed char int_least8_t;
+
+# 82
+typedef signed int int_least16_t;
+
+# 104
+typedef signed long int int_least32_t;
+
+# 111
+typedef unsigned char uint_least8_t;
+
+# 117
+typedef unsigned int uint_least16_t;
+
+# 136
+typedef unsigned long int uint_least32_t;
+
+# 145
+typedef signed char int_fast8_t;
+
+# 152
+typedef signed int int_fast16_t;
+
+# 174
+typedef signed long int int_fast32_t;
+
+# 181
+typedef unsigned char uint_fast8_t;
+
+# 187
+typedef unsigned int uint_fast16_t;
+
+# 206
+typedef unsigned long int uint_fast32_t;
+
+# 212
+typedef int32_t intmax_t;
+
+
+
+
+typedef uint32_t uintmax_t;
+
+
+
+
+typedef int16_t intptr_t;
+
+
+
+
+typedef uint16_t uintptr_t;
+
+# 68 "CRTOS2.h"
+typedef unsigned char CRTOS2_TASK_ID;
+typedef unsigned char CRTOS2_T_TIMER;
+
+
+
+
+extern volatile CRTOS2_T_TIMER crtos2TaskTimer[];
+
+# 13 "task0.c"
+static uint8_t i = 0;
+
+# 20
+CRTOS2_T_TIMER task0(void)
+{
+switch(i)
+{
+case 0: goto T0L0; break;
+case 1: goto T0L1; break;
+case 2: goto T0L2; break;
+default: i = 0; return 0; break;
+}
+
+
+T0L0:
+i = 0;
+
+
+++i;
+T0L1: if (1) {return 1;}
+
+
+++i;
+T0L2: if (1) {return 1;}
+
+
+i = 0;
+return 0;
+}
+

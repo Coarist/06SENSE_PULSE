@@ -1,0 +1,27 @@
+
+Memory Class Usage:
+
+Program space:
+    CODE                 used    79h (   121) of   3FFh words   ( 11.8%)
+    STRCODE              used     0h (     0) of   3FFh words   (  0.0%)
+    STRING               used     0h (     0) of   3FFh words   (  0.0%)
+    CONST                used     3h (     3) of   3FFh words   (  0.3%)
+    ENTRY                used     0h (     0) of   3FFh words   (  0.0%)
+
+Data space:
+    BANK0                used     8h (     8) of    3Eh bytes   ( 12.9%)
+    ABS1                 used     2h (     2) of    40h bytes   (  3.1%)
+    COMMON               used     0h (     0) of     2h bytes   (  0.0%)
+
+EEPROM space:
+    EEDATA               used     0h (     0) of    80h bytes   (  0.0%)
+
+Data stack space:
+    STACK                used     0h (     0) of    36h bytes   (  0.0%)
+
+Configuration bits:
+    CONFIG               used     1h (     1) of     1h word    (100.0%)
+
+ID Location space:
+    IDLOC                used     4h (     4) of     4h bytes   (100.0%)
+

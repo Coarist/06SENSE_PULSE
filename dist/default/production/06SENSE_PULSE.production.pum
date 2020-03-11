@@ -1,0 +1,25 @@
+
+Psect Usage Map:
+
+ Psect      | Contents                         | Memory Range  | Size
+------------|----------------------------------|---------------|------------
+ reset_vec  | Reset vector                     | 0000h - 0000h |  1 word   
+ intentry   | Interrupt context entry code     | 0004h - 000Ch |  9 words  
+ end_init   | Initialization code              | 000Dh - 000Dh |  1 word   
+ cinit      | Initialization code              | 000Eh - 0011h |  4 words  
+ maintext   | Program code for main() function | 0012h - 0049h | 56 words  
+ text2      | Program and library code         | 004Ah - 006Ah | 33 words  
+ text1      | Program and library code         | 006Bh - 007Ch | 18 words  
+            |                                  |               |            
+ swtext1    |                                  | 007Dh - 007Fh |  3 words  
+------------|----------------------------------|---------------|------------
+ cstackBANK | Stack in bank 0                  | 0020h - 0025h |  6 bytes  
+ bssBANK0   | BSS variables in bank 0          | 0026h - 0027h |  2 bytes  
+            |                                  |               |            
+ abs_s1     | Absolute RAM variables           | 005Eh - 005Fh |  2 bytes  
+------------|----------------------------------|---------------|------------
+ config     |                                  | 2007h - 2007h |  1 word   
+------------|----------------------------------|---------------|------------
+ idloc      | User-programmed ID locations     | 2000h - 2003h |  4 bytes  
+------------|----------------------------------|---------------|------------
+
