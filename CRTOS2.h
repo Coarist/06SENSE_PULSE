@@ -47,14 +47,14 @@ extern "C" {
 //-----------------------------------------------------------------------------
 // This macro expands into 3 bytes RAM, 17 words FLASH ROM (PRO mode)
 //-----------------------------------------------------------------------------
-#define CRTOS2TimerTick()                              \
-{                                                      \
-    unsigned char *ii = crtos2TaskTimer;               \
-    while (ii < &crtos2TaskTimer[CRTOS2_NUMBER_TASKS]) \
-    {                                                  \
-        if(*ii){--*ii;}                                \
-        ++ii;                                          \
-    }                                                  \
+#define CRTOS2TimerTick()                                \
+{                                                        \
+    unsigned char *ii = (unsigned char*)crtos2TaskTimer; \
+    while (ii < &crtos2TaskTimer[CRTOS2_NUMBER_TASKS])   \
+    {                                                    \
+        if(*ii){--*ii;}                                  \
+        ++ii;                                            \
+    }                                                    \
 }
 
 //-----------------------------------------------------------------------------
