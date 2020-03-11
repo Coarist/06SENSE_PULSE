@@ -11,6 +11,8 @@
 #include "DeviceConfig.h"
 #include "CRTOS2.h"
 #include "uintegers2.h"
+#include "stdint.h"
+#include "stdbool.h"
 
 //-----------------------------------------------------------------------------
 // Compile time check to ensure the target is compatible with this code.
@@ -42,8 +44,9 @@ CRTOS2_T_TIMER task0(void);
 //-----------------------------------------------------------------------------
 // Counters for tmr1 to track 
 //-----------------------------------------------------------------------------
-uinteger32_t t;
-static uint32_t x;
+uinteger32_t pulseInterval;
+static uint32_t tmr1Hi16;
+static bool tmr1Overflowed32 = 0;
 
 //-----------------------------------------------------------------------------
 // The PIC12F675 services all interrupt sources in one ISR. 
@@ -59,9 +62,27 @@ void interrupt IntVector( void )
     //---------------------------------------------------------------
     // Additional interrupt servicing IOC, timer1
     //---------------------------------------------------------------
+    if (TMR1IF)
+    {
+        if(++tmr1Hi16==0) {tmr1Overflowed32=1;}
+        TMR1IF = 0;
+    }
+    //---------------------------------------------------------------
+    // Port Change Interrupt Flag bit
+    //---------------------------------------------------------------
+    {
+        GPIF = 0;
+    }
+    
+    //---------------------------------------------------------------
+    // Other interrupt flags not used in this application are:
+    //---------------------------------------------------------------
+    // INTF: GP2/INT External Interrupt Flag bit
+    // EEIF: EEPROM Write Operation Interrupt Flag bit
+    // ADIF: A/D Converter Interrupt Flag bit (PIC12F675 only)
+    // CMIF: Comparator Interrupt Flag bit
+    //---------------------------------------------------------------
 
-
-    INTF = GPIF = 0; //-------- ensure no recursive interrupt occurs
 }
 
 //-----------------------------------------------------------------------------
