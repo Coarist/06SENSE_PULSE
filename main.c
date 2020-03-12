@@ -70,7 +70,27 @@ void interrupt IntVector( void )
     //---------------------------------------------------------------
     // Port Change Interrupt Flag bit
     //---------------------------------------------------------------
+    if (GPIF)
     {
+        //; All interrupts are disabled
+        //MOVF TMR1H, W ; Read high byte
+        //MOVWF TMPH ;
+        //MOVF TMR1L, W ; Read low byte
+        //MOVWF TMPL ;
+        //MOVF TMR1H, W ; Read high byte
+        //SUBWF TMPH, W ; Sub 1st read with 2nd read
+        //BTFSC STATUS,Z ; Is result = 0
+        //GOTO CONTINUE ; Good 16-bit read
+        //;
+        //; TMR1L may have rolled over between the read of the high and low bytes.
+        //; Reading the high and low bytes now will read a good value.
+        //;
+        //MOVF TMR1H, W ; Read high byte
+        //MOVWF TMPH ;
+        //MOVF TMR1L, W ; Read low byte
+        //MOVWF TMPL ;
+        //; Re-enable the Interrupt (if required)
+        //CONTINUE ; Continue with your code       
         GPIF = 0;
     }
     
@@ -126,7 +146,7 @@ void main(void)
     CRTOS2_T_TIMER t;
 
     //---------------------------------------------------------------
-    // CRTOS task dispatcher infinite loop begins
+    // CRTOS2 task dispatcher infinite loop
     //---------------------------------------------------------------
     for(;;)
     {
