@@ -4,6 +4,7 @@
     <logicalFolder name="Docs" displayName="Docs" projectFiles="true">
       <itemPath>Docs/06aut358 Issue C Mods.pdf</itemPath>
       <itemPath>Docs/PIC12F675_41190G.pdf</itemPath>
+      <itemPath>Docs/DS33023a.pdf</itemPath>
     </logicalFolder>
     <logicalFolder name="HeaderFiles"
                    displayName="Header Files"

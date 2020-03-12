@@ -42,11 +42,19 @@ __IDLOC7('p','u','l','s');
 CRTOS2_T_TIMER task0(void);
 
 //-----------------------------------------------------------------------------
-// Counters for tmr1 to track 
+// 16-bit timer 1 uses these variables to perform 32-bit counting
 //-----------------------------------------------------------------------------
-uinteger32_t pulseInterval;
 static uint32_t tmr1Hi16;
-static bool tmr1Overflowed32 = 0;
+static bool tmr1Overflowed32 = false;
+
+//-----------------------------------------------------------------------------
+// Sampling FIFO
+//-----------------------------------------------------------------------------
+#define SAM_BUFFER_SIZE (3)
+volatile uint8_t samBufHead;
+uint8_t samBufTail;
+volatile uint8_t samBufRemaining;
+volatile uinteger32_t pulseInterval[SAM_BUFFER_SIZE];
 
 //-----------------------------------------------------------------------------
 // The PIC12F675 services all interrupt sources in one ISR. 
@@ -60,11 +68,11 @@ void interrupt IntVector( void )
         T0IF = 0;
     }
     //---------------------------------------------------------------
-    // Additional interrupt servicing IOC, timer1
+    // 16-bit timer1
     //---------------------------------------------------------------
     if (TMR1IF)
     {
-        if(++tmr1Hi16==0) {tmr1Overflowed32=1;}
+        if(++tmr1Hi16==0) {tmr1Overflowed32=true;}
         TMR1IF = 0;
     }
     //---------------------------------------------------------------
@@ -72,37 +80,79 @@ void interrupt IntVector( void )
     //---------------------------------------------------------------
     if (GPIF)
     {
-        //; All interrupts are disabled
-        //MOVF TMR1H, W ; Read high byte
-        //MOVWF TMPH ;
-        //MOVF TMR1L, W ; Read low byte
-        //MOVWF TMPL ;
-        //MOVF TMR1H, W ; Read high byte
-        //SUBWF TMPH, W ; Sub 1st read with 2nd read
-        //BTFSC STATUS,Z ; Is result = 0
-        //GOTO CONTINUE ; Good 16-bit read
-        //;
-        //; TMR1L may have rolled over between the read of the high and low bytes.
-        //; Reading the high and low bytes now will read a good value.
-        //;
-        //MOVF TMR1H, W ; Read high byte
-        //MOVWF TMPH ;
-        //MOVF TMR1L, W ; Read low byte
-        //MOVWF TMPL ;
-        //; Re-enable the Interrupt (if required)
-        //CONTINUE ; Continue with your code       
-        GPIF = 0;
+        uint8_t b0, b1;
+        //-----------------------------------------------------------
+        // Write (read-modify-write) to port to clear the mismatch
+        //-----------------------------------------------------------
+        INPUT_PULSE = 0;
+        //-----------------------------------------------------------
+        // In case pulse edges are very rapid, we are now immediately
+        // ready to catch the next edge of opposite polarity. 
+        //-----------------------------------------------------------
+        GPIF = false;
+        //-----------------------------------------------------------
+        // Stopping Timer1 is un-avoidable. Make the duration short. 
+        //-----------------------------------------------------------
+        TMR1ON = false;
+        //-----------------------------------------------------------
+        // Snapshot 16-bit timer 1. We make use of the fact that the
+        // timer is reloaded with small number. Within this ISR no 
+        // 8-bit carry-over will happen. 
+        //-----------------------------------------------------------
+        b1 = TMR1H;
+        b0 = TMR1L;
+        TMR1H = 0;
+        TMR1L = 0; //--- 10 instruction cycle approximated correction
+        //-----------------------------------------------------------
+        // Release the timer to let it run to time the next edge.  
+        //-----------------------------------------------------------
+        TMR1ON = true;
+        //-----------------------------------------------------------
+        // TMR1 ISR code has to be repeated here in case the timer
+        // overflowed before it is turned off. 
+        //-----------------------------------------------------------
+        if (TMR1IF) 
+        {
+            if(++tmr1Hi16==0) {tmr1Overflowed32=true;}
+            TMR1IF =0;
+        }
+        //-----------------------------------------------------------
+        // Prepare a pointer to the sampling FIFO buffer, maintain  
+        // the buffer indices, write to head, read from tail. 
+        //-----------------------------------------------------------
+        uinteger32_t *x = &pulseInterval[samBufHead++];
+        if(sizeof(pulseInterval) <= samBufHead) {samBufHead = 0;}
+        samBufRemaining--;
+        //-----------------------------------------------------------
+        // Record the snapshot value(s).
+        //-----------------------------------------------------------
+        if (tmr1Overflowed32)
+        {
+            x->value = UINT32_MAX;
+            tmr1Overflowed32 = false;
+        }
+        else
+        {
+            x->words.W1 = tmr1Hi16;
+            x->bytes.C1 = b1;
+            x->bytes.C0 = b0;
+        }
+        //-----------------------------------------------------------
+        // Timer 1 higher 16-bit value can now be cleared to zero
+        // after it has been referenced. Within this ISR no 16-bit 
+        // carry-over will happen hence it is safe to clear it after
+        // timer 1 has been turned back on quite a few lines above. 
+        //-----------------------------------------------------------
+        tmr1Hi16 = 0;
     }
-    
     //---------------------------------------------------------------
-    // Other interrupt flags not used in this application are:
+    // PIC12F675 interrupt flags not used in this application are:
     //---------------------------------------------------------------
     // INTF: GP2/INT External Interrupt Flag bit
     // EEIF: EEPROM Write Operation Interrupt Flag bit
     // ADIF: A/D Converter Interrupt Flag bit (PIC12F675 only)
     // CMIF: Comparator Interrupt Flag bit
     //---------------------------------------------------------------
-
 }
 
 //-----------------------------------------------------------------------------
