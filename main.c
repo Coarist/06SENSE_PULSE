@@ -13,6 +13,8 @@
 #include "uintegers2.h"
 #include "stdint.h"
 #include "stdbool.h"
+#include "alarm.h"
+#include "audioVisual.h"
 
 //-----------------------------------------------------------------------------
 // Compile time check to ensure the target is compatible with this code.
@@ -37,24 +39,15 @@ __IDLOC7('p','u','l','s');
 #define TMR0_RELOAD (125)
 
 //-----------------------------------------------------------------------------
-// User to put this in a header file which will be #include'd into this file
-//-----------------------------------------------------------------------------
-CRTOS2_T_TIMER task0(void);
-
-//-----------------------------------------------------------------------------
 // 16-bit timer 1 uses these variables to perform 32-bit counting
 //-----------------------------------------------------------------------------
-static uint32_t tmr1Hi16;
-static bool tmr1Overflowed32 = false;
+static volatile uint32_t tmr1Hi16;
+volatile bool tmr1Overflowed32 = false;
 
 //-----------------------------------------------------------------------------
-// Sampling FIFO
+// Sampling (forgone FIFO noise rejection scheme, too resource-intensive)
 //-----------------------------------------------------------------------------
-#define SAM_BUFFER_SIZE (3)
-volatile uint8_t samBufHead;
-uint8_t samBufTail;
-volatile uint8_t samBufRemaining;
-volatile uinteger32_t pulseInterval[SAM_BUFFER_SIZE];
+volatile uinteger32_t pulseInterval;
 
 //-----------------------------------------------------------------------------
 // The PIC12F675 services all interrupt sources in one ISR. 
@@ -80,7 +73,6 @@ void interrupt IntVector( void )
     //---------------------------------------------------------------
     if (GPIF)
     {
-        uint8_t b0, b1;
         //-----------------------------------------------------------
         // Write (read-modify-write) to port to clear the mismatch
         //-----------------------------------------------------------
@@ -95,12 +87,10 @@ void interrupt IntVector( void )
         //-----------------------------------------------------------
         TMR1ON = false;
         //-----------------------------------------------------------
-        // Snapshot 16-bit timer 1. We make use of the fact that the
-        // timer is reloaded with small number. Within this ISR no 
-        // 8-bit carry-over will happen. 
+        // Snapshot lower 16-bit value.
         //-----------------------------------------------------------
-        b1 = TMR1H;
-        b0 = TMR1L;
+        pulseInterval.bytes.C1 = TMR1H;
+        pulseInterval.bytes.C0 = TMR1L;
         TMR1H = 0;
         TMR1L = 0; //--- 10 instruction cycle approximated correction
         //-----------------------------------------------------------
@@ -117,25 +107,16 @@ void interrupt IntVector( void )
             TMR1IF =0;
         }
         //-----------------------------------------------------------
-        // Prepare a pointer to the sampling FIFO buffer, maintain  
-        // the buffer indices, write to head, read from tail. 
-        //-----------------------------------------------------------
-        uinteger32_t *x = &pulseInterval[samBufHead++];
-        if(sizeof(pulseInterval) <= samBufHead) {samBufHead = 0;}
-        samBufRemaining--;
-        //-----------------------------------------------------------
-        // Record the snapshot value(s).
+        // Record the higher 16-bit value.
         //-----------------------------------------------------------
         if (tmr1Overflowed32)
         {
-            x->value = UINT32_MAX;
+            pulseInterval.value = UINT32_MAX;
             tmr1Overflowed32 = false;
         }
         else
         {
-            x->words.W1 = tmr1Hi16;
-            x->bytes.C1 = b1;
-            x->bytes.C0 = b0;
+            pulseInterval.words.W1 = tmr1Hi16;
         }
         //-----------------------------------------------------------
         // Timer 1 higher 16-bit value can now be cleared to zero
@@ -176,13 +157,20 @@ void main(void)
     TRISIO = TRISIO_CFG;
     WPU    = WPU_CONFIG;   // additional, set up weak pull-up
     IOC    = IOC_CONFIG;
+    T1CON  = T1CON_CONF;
 
     //---------------------------------------------------------------
-    // Cnnfigure timer 1 (16-bit value comprising two bytes. Since 
+    // Configure timer 1 (16-bit value comprising two bytes. Since 
     // our target MCU is 8-bit, reading the timer is not a one-cycle
     // operation. Beware of this. 
     //---------------------------------------------------------------
     TMR1ON = TMR1IE = 1;    
+
+    //---------------------------------------------------------------
+    // Code modules initializations
+    //---------------------------------------------------------------
+    av_control_task_init();
+    alarm_init();
     
     //---------------------------------------------------------------
     // Enable interrupts of interest (those that are utilized)
@@ -210,7 +198,8 @@ void main(void)
             //-------------------------------------------------------
             // User to add one case for each task (in this style)
             //-------------------------------------------------------
-            case 0: t = task0(); break;
+            case 0: t = alarm_task(); break;
+            case 1: t = av_control_task(); break;
             default: continue; //------ bypass CRTOS2delaySet() below
         }
         CRTOS2delaySet(i,t);
