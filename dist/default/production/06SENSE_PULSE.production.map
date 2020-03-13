@@ -1,23 +1,23 @@
-Microchip MPLAB XC8 Compiler V1.42 ()
+Microchip MPLAB XC8 Compiler V1.43 ()
 
 Linker command line:
 
--W-3 --edf=D:\Program Files (x86)\Microchip\xc8\v1.42\dat\en_msgs.txt -cs \
+-W-3 --edf=F:\ProgramFilesx86\Microchip\xc8\v1.43\dat\en_msgs.txt -cs \
   -h+dist/default/production\06SENSE_PULSE.production.sym \
   --cmf=dist/default/production\06SENSE_PULSE.production.cmf -z -Q12F675 \
-  -oC:\Users\chi\AppData\Local\Temp\s7fs.2 \
+  -oC:\Users\chi\AppData\Local\Temp\sd7s.2 \
   -Mdist/default/production/06SENSE_PULSE.production.map -E1 -ver=XC8 \
-  --acfsm=1493 -ASTACK=028h-05dh -pstack=STACK -ACODE=00h-03FEh \
+  --acfsm=1493 -ASTACK=04Fh-05dh -pstack=STACK -ACODE=00h-03FEh \
   -ASTRCODE=00h-03FEh -ASTRING=00h-0FFhx3,0300h-03FEh \
   -ACONST=00h-0FFhx3,0300h-03FEh -AENTRY=00h-0FFhx3,0300h-03FEh \
   -ABANK0=020h-05Dh -ARAM=020h-05Dh -AABS1=020h-05Fh -ACOMMON=05Eh-05Fh \
   -ASFR0=00h-01Fh -ASFR1=080h-0DDh \
   -preset_vec=00h,intentry=04h,init,end_init -ppowerup=CODE -pcinit=CODE \
-  -pfunctab=CODE -ACONFIG=02007h-02007h -pconfig=CONFIG -DCONFIG=2 \
+  -pfunctab=ENTRY -ACONFIG=02007h-02007h -pconfig=CONFIG -DCONFIG=2 \
   -AIDLOC=02000h-02003h -pidloc=IDLOC -DIDLOC=2 -AEEDATA=00h-07Fh/02100h \
   -peeprom_data=EEDATA -DEEDATA=2 -posccal=03FFh -DCODE=2 -DSTRCODE=2 \
   -DSTRING=2 -DCONST=2 -DENTRY=2 -k \
-  C:\Users\chi\AppData\Local\Temp\s7fs.obj \
+  C:\Users\chi\AppData\Local\Temp\sd7s.obj \
   dist/default/production\06SENSE_PULSE.production.obj 
 
 Object code version is 3.11
@@ -27,45 +27,60 @@ Machine type is 12F675
 
 
                 Name                               Link     Load   Length Selector   Space Scale
-C:\Users\chi\AppData\Local\Temp\s7fs.obj
+C:\Users\chi\AppData\Local\Temp\sd7s.obj
                 end_init                              D        D        1        8       0
                 reset_vec                             0        0        1        0       0
                 idloc                              2000     2000        4     4000       0
                 config                             2007     2007        1     400E       0
 dist/default/production\06SENSE_PULSE.production.obj
-                cinit                                 E        E        4        8       0
+                cinit                                 E        E        9        8       0
                 intentry                              4        4        9        8       0
-                text2                                4A       4A       21        8       0
-                swtext1                              7D       7D        3       FA       0
-                text1                                6B       6B       12        8       0
-                maintext                             12       12       38        8       0
-                cstackBANK0                          20       20        6       20       1
-                bssBANK0                             26       26        2       20       1
+                eeprom_data                           0     2100       10     4200       3
+                text13                              1B7      1B7       61        8       0
+                swtext2                             286      286        5      50C       0
+                alarm                                CB       CB       84        8       0
+                audVis                               17       17       B4        8       0
+                text7                               280      280        6        8       0
+                text4                               267      267       11        8       0
+                opParam                             14F      14F       68        8       0
+                swtext1                               1        1        3        2       0
+                maintext                            218      218       4F        8       0
+                cstackBANK0                          3E       3E       10       20       1
+                clrtext                             278      278        8        8       0
+                dataBANK0                            4E       4E        1       20       1
+                bssBANK0                             20       20       1E       20       1
 
 TOTAL           Name                               Link     Load   Length     Space
         CLASS   STACK          
 
         CLASS   CODE           
                 end_init                              D        D        1         0
-                cinit                                 E        E        4         0
+                cinit                                 E        E        9         0
                 intentry                              4        4        9         0
                 reset_vec                             0        0        1         0
-                text2                                4A       4A       21         0
-                text1                                6B       6B       12         0
-                maintext                             12       12       38         0
+                text13                              1B7      1B7       61         0
+                alarm                                CB       CB       84         0
+                audVis                               17       17       B4         0
+                text7                               280      280        6         0
+                text4                               267      267       11         0
+                opParam                             14F      14F       68         0
+                maintext                            218      218       4F         0
+                clrtext                             278      278        8         0
 
         CLASS   STRCODE        
 
         CLASS   STRING         
 
         CLASS   CONST          
-                swtext1                              7D       7D        3         0
+                swtext2                             286      286        5         0
+                swtext1                               1        1        3         0
 
         CLASS   ENTRY          
 
         CLASS   BANK0          
-                cstackBANK0                          20       20        6         1
-                bssBANK0                             26       26        2         1
+                cstackBANK0                          3E       3E       10         1
+                dataBANK0                            4E       4E        1         1
+                bssBANK0                             20       20       1E         1
 
         CLASS   RAM            
 
@@ -85,6 +100,7 @@ TOTAL           Name                               Link     Load   Length     Sp
                 idloc                              2000     2000        4         0
 
         CLASS   EEDATA         
+                eeprom_data                           0     2100       10         3
 
         CLASS   BANK1          
 
@@ -93,185 +109,265 @@ TOTAL           Name                               Link     Load   Length     Sp
 SEGMENTS        Name                           Load    Length   Top    Selector   Space  Class     Delta
 
                 reset_vec                      000000  000001  000001         0       0  CODE        2
-                intentry                       000004  000079  00007D         8       0  CODE        2
-                cstackBANK0                    000020  000008  000028        20       1  BANK0       1
-                swtext1                        00007D  000003  000080        FA       0  CONST       2
+                swtext1                        000001  000003  000004         2       0  CONST       2
+                intentry                       000004  000282  000286         8       0  CODE        2
+                bssBANK0                       000020  00002F  00004F        20       1  BANK0       1
+                swtext2                        000286  000005  00028B       50C       0  CONST       2
                 idloc                          002000  000004  002004      4000       0  IDLOC       2
                 config                         002007  000001  002008      400E       0  CONFIG      2
+                eeprom_data                    002100  000010  002110      4200       3  EEDATA      2
 
 
 UNUSED ADDRESS RANGES
 
         Name                Unused          Largest block    Delta
-        BANK0            0028-005D             36           1
-        CODE             0001-0003              3           2
-                         0080-03FE            37F
-        CONST            0001-0003              3           2
-                         0080-03FE            100
-        EEDATA           2100-217F             80           2
-        ENTRY            0001-0003              3           2
-                         0080-03FE            100
-        RAM              0028-005D             36           1
+        BANK0            004F-005D              F           1
+        CODE             028B-03FE            174           2
+        CONST            028B-03FE             75           2
+        EEDATA           2110-217F             70           2
+        ENTRY            028B-03FE             75           2
+        RAM              004F-005D              F           1
         SFR0             0000-001F             20           1
         SFR1             0080-00DD             5E           1
-        STACK            0028-005D             36           1
-        STRCODE          0001-0003              3           2
-                         0080-03FE            37F
-        STRING           0001-0003              3           2
-                         0080-03FE            100
+        STACK            004F-005D              F           1
+        STRCODE          028B-03FE            174           2
+        STRING           028B-03FE             75           2
 
                                   Symbol Table
 
-IntVector@ii             cstackBANK0  0023
-_ANSEL                   (abs)        009F
-_CMCON                   (abs)        0019
-_GPIF                    (abs)        0058
-_GPIO                    (abs)        0005
-_INTCON                  (abs)        000B
-_INTF                    (abs)        0059
-_IOC                     (abs)        0096
-_IntVector               text2        004A
-_OPTION_REG              (abs)        0081
-_T0IE                    (abs)        005D
-_T0IF                    (abs)        005A
-_TMR0                    (abs)        0001
-_TMR1IE                  (abs)        0460
-_TMR1ON                  (abs)        0080
-_TRISIO                  (abs)        0085
-_WPU                     (abs)        0095
-__CFG_BOREN$ON           (abs)        0000
-__CFG_CP$ON              (abs)        0000
-__CFG_CPD$OFF            (abs)        0000
-__CFG_FOSC$INTRCIO       (abs)        0000
-__CFG_IDLOC0$            (abs)        0070
-__CFG_IDLOC1$            (abs)        0075
-__CFG_IDLOC2$            (abs)        006C
-__CFG_IDLOC3$            (abs)        0073
-__CFG_MCLRE$OFF          (abs)        0000
-__CFG_PWRTE$ON           (abs)        0000
-__CFG_WDTE$ON            (abs)        0000
-__Habs1                  abs1         07FE
-__Hbank0                 bank0        07FE
-__Hbank1                 bank1        07FE
-__HbssBANK0              bssBANK0     07FE
-__Hcinit                 cinit        0012
-__Hclrtext               clrtext      07FE
-__Hcode                  code         07FE
-__Hcommon                common       07FE
-__Hconfig                config       2008
-__HcstackBANK0           cstackBANK0  07FE
-__HcstackCOMMON          cstackCOMMON 07FE
-__Heeprom_data           eeprom_data  0000
-__Hend_init              end_init     000E
-__Hfunctab               functab      0000
-__Hidloc                 idloc        2004
-__Hinit                  init         000D
-__Hintentry              intentry     000D
-__Hmaintext              maintext     07FE
-__Hosccal                osccal       03FF
-__Hpa_nodes0             pa_nodes0    07FE
-__Hpowerup               powerup      0000
-__Hram                   ram          07FE
-__Hreset_vec             reset_vec    0001
-__Hsfr0                  sfr0         07FE
-__Hsfr1                  sfr1         07FE
-__Hspace_0               (abs)        2008
-__Hspace_1               (abs)        07FE
-__Hspace_2               (abs)        0000
-__Hspace_3               (abs)        0000
-__Hstack                 stack        0000
-__Hstrings               strings      07FE
-__Htext                  text         07FE
-__Labs1                  abs1         07FE
-__Lbank0                 bank0        07FE
-__Lbank1                 bank1        07FE
-__LbssBANK0              bssBANK0     07FE
-__Lcinit                 cinit        000E
-__Lclrtext               clrtext      07FE
-__Lcode                  code         07FE
-__Lcommon                common       07FE
-__Lconfig                config       2007
-__LcstackBANK0           cstackBANK0  07FE
-__LcstackCOMMON          cstackCOMMON 07FE
-__Leeprom_data           eeprom_data  0000
-__Lend_init              end_init     000D
-__Lfunctab               functab      0000
-__Lidloc                 idloc        2000
-__Linit                  init         000D
-__Lintentry              intentry     0004
-__Lmaintext              maintext     07FE
-__Losccal                osccal       03FF
-__Lpa_nodes0             pa_nodes0    07FE
-__Lpowerup               powerup      0000
-__Lram                   ram          07FE
-__Lreset_vec             reset_vec    0000
-__Lsfr0                  sfr0         07FE
-__Lsfr1                  sfr1         07FE
-__Lspace_0               (abs)        0000
-__Lspace_1               (abs)        0000
-__Lspace_2               (abs)        0000
-__Lspace_3               (abs)        0000
-__Lstack                 stack        0000
-__Lstrings               strings      07FE
-__Ltext                  text         07FE
-__S0                     (abs)        2008
-__S1                     (abs)        0028
-__S2                     (abs)        0000
-__S3                     (abs)        0000
-___int_sp                stack        0000
-___latbits               (abs)        0000
-___osccal_val            osccal       03FF
-___sp                    stack        0000
-__end_of_IntVector       text2        006B
-__end_of__initialization cinit        0010
-__end_of_main            maintext     004A
-__end_of_task0           text1        007D
-__initialization         cinit        000E
-__pbssBANK0              bssBANK0     0026
-__pcstackBANK0           cstackBANK0  0020
-__pcstackCOMMON          cstackCOMMON 0000
-__pintentry              intentry     0004
-__pmaintext              maintext     0012
-__pswtext1               swtext1      007D
-__ptext1                 text1        006B
-__ptext2                 text2        004A
-__size_of_IntVector      (abs)        0000
-__size_of_main           (abs)        0000
-__size_of_task0          (abs)        0000
-_crtos2TaskTimer         bssBANK0     0027
-_i                       bssBANK0     0026
-_main                    maintext     0012
-_task0                   text1        006B
-btemp                    (abs)        005E
-end_of_initialization    cinit        0010
-interrupt_function       intentry     0004
-intlevel0                functab      0000
-intlevel1                functab      0000
-intlevel2                functab      0000
-intlevel3                functab      0000
-intlevel4                functab      0000
-intlevel5                functab      0000
-main@i                   cstackBANK0  0025
-main@t                   cstackBANK0  0024
-reset_vec                reset_vec    0000
-saved_w                  (abs)        005E
-stackhi                  (abs)        0000
-stacklo                  (abs)        0000
-start                    init         000D
-start_initialization     cinit        000E
-wtemp0                   (abs)        005E
+DATAEE_ReadByte@bAdd                cstackBANK0  0042
+DATAEE_WriteByte@bAdd               cstackBANK0  0043
+DATAEE_WriteByte@bData              cstackBANK0  0042
+IntVector@ii                        cstackBANK0  0041
+_ANSEL                              (abs)        009F
+_CMCON                              (abs)        0019
+_DATAEE_ReadByte                    text7        0280
+_DATAEE_WriteByte                   text4        0267
+_EEADR                              (abs)        009B
+_EECON1bits                         (abs)        009C
+_EECON2                             (abs)        009D
+_EEDATA                             (abs)        009A
+_GIE                                (abs)        005F
+_GPIF                               (abs)        0058
+_GPIO                               (abs)        0005
+_GPIO1                              (abs)        0029
+_GPIO2                              (abs)        002A
+_GPIO4                              (abs)        002C
+_GPIO5                              (abs)        002D
+_INTCON                             (abs)        000B
+_INTCONbits                         (abs)        000B
+_IOC                                (abs)        0096
+_IntVector                          text13       01B7
+_OPTION_REG                         (abs)        0081
+_T0IE                               (abs)        005D
+_T0IF                               (abs)        005A
+_T1CON                              (abs)        0010
+_TMR0                               (abs)        0001
+_TMR1H                              (abs)        000F
+_TMR1IE                             (abs)        0460
+_TMR1IF                             (abs)        0060
+_TMR1L                              (abs)        000E
+_TMR1ON                             (abs)        0080
+_TRISIO                             (abs)        0085
+_WPU                                (abs)        0095
+__Beeprom_data                      eeprom_data  2100
+__CFG_BOREN$ON                      (abs)        0000
+__CFG_CP$ON                         (abs)        0000
+__CFG_CPD$OFF                       (abs)        0000
+__CFG_FOSC$INTRCIO                  (abs)        0000
+__CFG_IDLOC0$                       (abs)        0070
+__CFG_IDLOC1$                       (abs)        0075
+__CFG_IDLOC2$                       (abs)        006C
+__CFG_IDLOC3$                       (abs)        0073
+__CFG_MCLRE$OFF                     (abs)        0000
+__CFG_PWRTE$ON                      (abs)        0000
+__CFG_WDTE$ON                       (abs)        0000
+__Habs1                             abs1         07FE
+__Halarm                            alarm        07FE
+__HaudVis                           audVis       07FE
+__Hbank0                            bank0        07FE
+__Hbank1                            bank1        07FE
+__HbssBANK0                         bssBANK0     07FE
+__Hcinit                            cinit        0017
+__Hclrtext                          clrtext      07FE
+__Hcode                             code         07FE
+__Hcommon                           common       07FE
+__Hconfig                           config       2008
+__HcstackBANK0                      cstackBANK0  07FE
+__HcstackCOMMON                     cstackCOMMON 07FE
+__HdataBANK0                        dataBANK0    07FE
+__Heeprom_data                      eeprom_data  0010
+__Hend_init                         end_init     000E
+__Hfunctab                          functab      0000
+__HidataBANK0                       idataBANK0   07FE
+__Hidloc                            idloc        2004
+__Hinit                             init         000D
+__Hintentry                         intentry     000D
+__Hmaintext                         maintext     07FE
+__HopParam                          opParam      07FE
+__Hosccal                           osccal       03FF
+__Hpa_nodes0                        pa_nodes0    07FE
+__Hpowerup                          powerup      0000
+__Hram                              ram          07FE
+__Hreset_vec                        reset_vec    0001
+__Hsfr0                             sfr0         07FE
+__Hsfr1                             sfr1         07FE
+__Hspace_0                          (abs)        2008
+__Hspace_1                          (abs)        07FE
+__Hspace_2                          (abs)        0000
+__Hspace_3                          (abs)        0010
+__Hstack                            stack        0000
+__Hstrings                          strings      07FE
+__Htext                             text         07FE
+__Labs1                             abs1         07FE
+__Lalarm                            alarm        07FE
+__LaudVis                           audVis       07FE
+__Lbank0                            bank0        07FE
+__Lbank1                            bank1        07FE
+__LbssBANK0                         bssBANK0     07FE
+__Lcinit                            cinit        000E
+__Lclrtext                          clrtext      07FE
+__Lcode                             code         07FE
+__Lcommon                           common       07FE
+__Lconfig                           config       2007
+__LcstackBANK0                      cstackBANK0  07FE
+__LcstackCOMMON                     cstackCOMMON 07FE
+__LdataBANK0                        dataBANK0    07FE
+__Leeprom_data                      eeprom_data  0000
+__Lend_init                         end_init     000D
+__Lfunctab                          functab      0000
+__LidataBANK0                       idataBANK0   07FE
+__Lidloc                            idloc        2000
+__Linit                             init         000D
+__Lintentry                         intentry     0004
+__Lmaintext                         maintext     07FE
+__LopParam                          opParam      07FE
+__Losccal                           osccal       03FF
+__Lpa_nodes0                        pa_nodes0    07FE
+__Lpowerup                          powerup      0000
+__Lram                              ram          07FE
+__Lreset_vec                        reset_vec    0000
+__Lsfr0                             sfr0         07FE
+__Lsfr1                             sfr1         07FE
+__Lspace_0                          (abs)        0000
+__Lspace_1                          (abs)        0000
+__Lspace_2                          (abs)        0000
+__Lspace_3                          (abs)        0000
+__Lstack                            stack        0000
+__Lstrings                          strings      07FE
+__Ltext                             text         07FE
+__S0                                (abs)        2008
+__S1                                (abs)        004F
+__S2                                (abs)        0000
+__S3                                (abs)        2110
+___int_sp                           stack        0000
+___latbits                          (abs)        0000
+___osccal_val                       osccal       03FF
+___sp                               stack        0000
+__end_of_DATAEE_ReadByte            text7        0286
+__end_of_DATAEE_WriteByte           text4        0278
+__end_of_IntVector                  text13       0218
+__end_of__initialization            cinit        0015
+__end_of_alarm_init                 alarm        014F
+__end_of_alarm_task                 alarm        013A
+__end_of_avControl                  audVis       00CB
+__end_of_av_control_task            audVis       007A
+__end_of_av_control_task_init       audVis       001C
+__end_of_main                       maintext     0267
+__end_of_opSetAlarmSamplingFromEE   opParam      01B7
+__end_of_opSetMainAlarmByValue      opParam      0199
+__end_of_opSetMainAlarmFromCapture  opParam      017D
+__end_of_opSetMainAlarmFromEE       opParam      01B2
+__end_of_set_threshold_task         opParam      0169
+__initialization                    cinit        000E
+__palarm                            alarm        00CB
+__paudVis                           audVis       0017
+__pbssBANK0                         bssBANK0     0020
+__pcstackBANK0                      cstackBANK0  003E
+__pcstackCOMMON                     cstackCOMMON 0000
+__pdataBANK0                        dataBANK0    004E
+__pidataBANK0                       idataBANK0   0000
+__pintentry                         intentry     0004
+__pmaintext                         maintext     0218
+__popParam                          opParam      014F
+__pswtext1                          swtext1      0001
+__pswtext2                          swtext2      0286
+__ptext13                           text13       01B7
+__ptext4                            text4        0267
+__ptext7                            text7        0280
+__size_of_DATAEE_ReadByte           (abs)        0000
+__size_of_DATAEE_WriteByte          (abs)        0000
+__size_of_IntVector                 (abs)        0000
+__size_of_alarm_init                (abs)        0000
+__size_of_alarm_task                (abs)        0000
+__size_of_avControl                 (abs)        0000
+__size_of_av_control_task           (abs)        0000
+__size_of_av_control_task_init      (abs)        0000
+__size_of_main                      (abs)        0000
+__size_of_opSetAlarmSamplingFromEE  (abs)        0000
+__size_of_opSetMainAlarmByValue     (abs)        0000
+__size_of_opSetMainAlarmFromCapture (abs)        0000
+__size_of_opSetMainAlarmFromEE      (abs)        0000
+__size_of_set_threshold_task        (abs)        0000
+_alarm_init                         alarm        013A
+_alarm_task                         alarm        00CB
+_avControl                          audVis       007A
+_av_control_task                    audVis       001C
+_av_control_task_init               audVis       0017
+_avc                                bssBANK0     0033
+_crtos2TaskTimer                    bssBANK0     003B
+_i                                  bssBANK0     0030
+_mAlarmLevel                        bssBANK0     0020
+_main                               maintext     0218
+_opSetAlarmSamplingFromEE           opParam      01B2
+_opSetMainAlarmByValue              opParam      017D
+_opSetMainAlarmFromCapture          opParam      0169
+_opSetMainAlarmFromEE               opParam      0199
+_pAlarmLevel                        bssBANK0     0024
+_pulseInterval                      bssBANK0     0028
+_sampleInterval                     dataBANK0    004E
+_samplingCount                      bssBANK0     0031
+_set_threshold_task                 opParam      014F
+_tmr1Hi16                           bssBANK0     002C
+_tmr1Overflowed32                   bssBANK0     0032
+alarm_task@x                        cstackBANK0  0046
+avControl@c                         cstackBANK0  0045
+avControl@item                      cstackBANK0  0044
+avControl@mode                      cstackBANK0  0042
+btemp                               (abs)        005E
+clear_ram0                          clrtext      0278
+end_of_initialization               cinit        0015
+interrupt_function                  intentry     0004
+intlevel0                           functab      0000
+intlevel1                           functab      0000
+intlevel2                           functab      0000
+intlevel3                           functab      0000
+intlevel4                           functab      0000
+intlevel5                           functab      0000
+main@i                              cstackBANK0  004D
+main@t                              cstackBANK0  004C
+opSetMainAlarmByValue@x             cstackBANK0  0044
+opSetMainAlarmFromCapture@x         cstackBANK0  0048
+opSetMainAlarmFromEE@x              cstackBANK0  0043
+reset_vec                           reset_vec    0000
+saved_w                             (abs)        005E
+stackhi                             (abs)        0000
+stacklo                             (abs)        0000
+start                               init         000D
+start_initialization                cinit        000E
+wtemp0                              (abs)        005E
 
 
 FUNCTION INFORMATION:
 
  *************** function _main *****************
  Defined at:
-		line 70 in file "main.c"
+		line 143 in file "main.c"
  Parameters:    Size  Location     Type
 		None
  Auto vars:     Size  Location     Type
-  i               1    5[BANK0 ] unsigned char 
-  t               1    4[BANK0 ] unsigned char 
+  i               1   15[BANK0 ] unsigned char 
+  t               1   14[BANK0 ] unsigned char 
  Return value:  Size  Location     Type
                   1    wreg      void 
  Registers used:
@@ -286,17 +382,23 @@ FUNCTION INFORMATION:
       Temps:          0       0
       Totals:         0       2
 Total ram usage:        2 bytes
- Hardware stack levels required when called:    2
+ Hardware stack levels required when called:    5
  This function calls:
-		_task0
+		_alarm_init
+		_alarm_task
+		_av_control_task
+		_av_control_task_init
+		_opSetAlarmSamplingFromEE
+		_opSetMainAlarmFromEE
+		_set_threshold_task
  This function is called by:
 		Startup code after reset
  This function uses a non-reentrant model
 
 
- *************** function _task0 *****************
+ *************** function _set_threshold_task *****************
  Defined at:
-		line 20 in file "task0.c"
+		line 123 in file "opParam.c"
  Parameters:    Size  Location     Type
 		None
  Auto vars:     Size  Location     Type
@@ -304,7 +406,249 @@ Total ram usage:        2 bytes
  Return value:  Size  Location     Type
                   1    wreg      unsigned char 
  Registers used:
-		wreg, fsr0l, fsr0h, status,2, status,0
+		wreg, fsr0l, fsr0h, status,2, status,0, pclath, cstack
+ Tracked objects:
+		On entry : 
+		On exit  : 
+		Unchanged: 
+ Data sizes:     COMMON   BANK0
+      Params:         0       0
+      Locals:         0       0
+      Temps:          0       0
+      Totals:         0       0
+Total ram usage:        0 bytes
+ Hardware stack levels used:    1
+ Hardware stack levels required when called:    4
+ This function calls:
+		_opSetMainAlarmFromCapture
+ This function is called by:
+		_main
+ This function uses a non-reentrant model
+
+
+ *************** function _opSetMainAlarmFromCapture *****************
+ Defined at:
+		line 46 in file "opParam.c"
+ Parameters:    Size  Location     Type
+		None
+ Auto vars:     Size  Location     Type
+  x               4   10[BANK0 ] unsigned long 
+ Return value:  Size  Location     Type
+                  1    wreg      void 
+ Registers used:
+		wreg, status,2, status,0, pclath, cstack
+ Tracked objects:
+		On entry : 
+		On exit  : 
+		Unchanged: 
+ Data sizes:     COMMON   BANK0
+      Params:         0       0
+      Locals:         0       4
+      Temps:          0       0
+      Totals:         0       4
+Total ram usage:        4 bytes
+ Hardware stack levels used:    1
+ Hardware stack levels required when called:    3
+ This function calls:
+		_opSetMainAlarmByValue
+ This function is called by:
+		_set_threshold_task
+ This function uses a non-reentrant model
+
+
+ *************** function _opSetMainAlarmByValue *****************
+ Defined at:
+		line 69 in file "opParam.c"
+ Parameters:    Size  Location     Type
+  x               4    6[BANK0 ] unsigned long 
+ Auto vars:     Size  Location     Type
+		None
+ Return value:  Size  Location     Type
+                  1    wreg      void 
+ Registers used:
+		wreg, status,2, status,0, pclath, cstack
+ Tracked objects:
+		On entry : 
+		On exit  : 
+		Unchanged: 
+ Data sizes:     COMMON   BANK0
+      Params:         0       4
+      Locals:         0       0
+      Temps:          0       0
+      Totals:         0       4
+Total ram usage:        4 bytes
+ Hardware stack levels used:    1
+ Hardware stack levels required when called:    2
+ This function calls:
+		_DATAEE_WriteByte
+ This function is called by:
+		_opSetMainAlarmFromCapture
+ This function uses a non-reentrant model
+
+
+ *************** function _DATAEE_WriteByte *****************
+ Defined at:
+		line 21 in file "EE12F675.c"
+ Parameters:    Size  Location     Type
+  bAdd            1    wreg     unsigned char 
+  bData           1    4[BANK0 ] unsigned char 
+ Auto vars:     Size  Location     Type
+  bAdd            1    5[BANK0 ] unsigned char 
+ Return value:  Size  Location     Type
+                  1    wreg      void 
+ Registers used:
+		wreg
+ Tracked objects:
+		On entry : 
+		On exit  : 
+		Unchanged: 
+ Data sizes:     COMMON   BANK0
+      Params:         0       1
+      Locals:         0       1
+      Temps:          0       0
+      Totals:         0       2
+Total ram usage:        2 bytes
+ Hardware stack levels used:    1
+ Hardware stack levels required when called:    1
+ This function calls:
+		Nothing
+ This function is called by:
+		_opSetMainAlarmByValue
+ This function uses a non-reentrant model
+
+
+ *************** function _opSetMainAlarmFromEE *****************
+ Defined at:
+		line 98 in file "opParam.c"
+ Parameters:    Size  Location     Type
+		None
+ Auto vars:     Size  Location     Type
+  x               4    5[BANK0 ] struct uinteger32
+ Return value:  Size  Location     Type
+                  1    wreg      void 
+ Registers used:
+		wreg, pclath, cstack
+ Tracked objects:
+		On entry : 
+		On exit  : 
+		Unchanged: 
+ Data sizes:     COMMON   BANK0
+      Params:         0       0
+      Locals:         0       4
+      Temps:          0       0
+      Totals:         0       4
+Total ram usage:        4 bytes
+ Hardware stack levels used:    1
+ Hardware stack levels required when called:    2
+ This function calls:
+		_DATAEE_ReadByte
+ This function is called by:
+		_main
+ This function uses a non-reentrant model
+
+
+ *************** function _opSetAlarmSamplingFromEE *****************
+ Defined at:
+		line 115 in file "opParam.c"
+ Parameters:    Size  Location     Type
+		None
+ Auto vars:     Size  Location     Type
+		None
+ Return value:  Size  Location     Type
+                  1    wreg      void 
+ Registers used:
+		wreg, pclath, cstack
+ Tracked objects:
+		On entry : 
+		On exit  : 
+		Unchanged: 
+ Data sizes:     COMMON   BANK0
+      Params:         0       0
+      Locals:         0       0
+      Temps:          0       0
+      Totals:         0       0
+Total ram usage:        0 bytes
+ Hardware stack levels used:    1
+ Hardware stack levels required when called:    2
+ This function calls:
+		_DATAEE_ReadByte
+ This function is called by:
+		_main
+ This function uses a non-reentrant model
+
+
+ *************** function _DATAEE_ReadByte *****************
+ Defined at:
+		line 27 in file "EE12F675.c"
+ Parameters:    Size  Location     Type
+  bAdd            1    wreg     unsigned char 
+ Auto vars:     Size  Location     Type
+  bAdd            1    4[BANK0 ] unsigned char 
+ Return value:  Size  Location     Type
+                  1    wreg      unsigned char 
+ Registers used:
+		wreg
+ Tracked objects:
+		On entry : 
+		On exit  : 
+		Unchanged: 
+ Data sizes:     COMMON   BANK0
+      Params:         0       0
+      Locals:         0       1
+      Temps:          0       0
+      Totals:         0       1
+Total ram usage:        1 bytes
+ Hardware stack levels used:    1
+ Hardware stack levels required when called:    1
+ This function calls:
+		Nothing
+ This function is called by:
+		_opSetMainAlarmFromEE
+		_opSetAlarmSamplingFromEE
+ This function uses a non-reentrant model
+
+
+ *************** function _av_control_task_init *****************
+ Defined at:
+		line 59 in file "audioVisual.c"
+ Parameters:    Size  Location     Type
+		None
+ Auto vars:     Size  Location     Type
+		None
+ Return value:  Size  Location     Type
+                  1    wreg      void 
+ Registers used:
+		wreg, fsr0l, fsr0h, status,2, status,0, pclath, cstack
+ Tracked objects:
+		On entry : 
+		On exit  : 
+		Unchanged: 
+ Data sizes:     COMMON   BANK0
+      Params:         0       0
+      Locals:         0       0
+      Temps:          0       0
+      Totals:         0       0
+Total ram usage:        0 bytes
+ Hardware stack levels used:    1
+ Hardware stack levels required when called:    2
+ This function calls:
+		_avControl
+ This function is called by:
+		_main
+ This function uses a non-reentrant model
+
+
+ *************** function _av_control_task *****************
+ Defined at:
+		line 71 in file "audioVisual.c"
+ Parameters:    Size  Location     Type
+		None
+ Auto vars:     Size  Location     Type
+		None
+ Return value:  Size  Location     Type
+                  1    wreg      unsigned char 
+ Registers used:
+		wreg, status,2, status,0
  Tracked objects:
 		On entry : 
 		On exit  : 
@@ -324,14 +668,109 @@ Total ram usage:        0 bytes
  This function uses a non-reentrant model
 
 
+ *************** function _alarm_task *****************
+ Defined at:
+		line 32 in file "alarm.c"
+ Parameters:    Size  Location     Type
+		None
+ Auto vars:     Size  Location     Type
+  x               4    8[BANK0 ] unsigned long 
+ Return value:  Size  Location     Type
+                  1    wreg      unsigned char 
+ Registers used:
+		wreg, fsr0l, fsr0h, status,2, status,0, pclath, cstack
+ Tracked objects:
+		On entry : 
+		On exit  : 
+		Unchanged: 
+ Data sizes:     COMMON   BANK0
+      Params:         0       0
+      Locals:         0       4
+      Temps:          0       0
+      Totals:         0       4
+Total ram usage:        4 bytes
+ Hardware stack levels used:    1
+ Hardware stack levels required when called:    2
+ This function calls:
+		_avControl
+ This function is called by:
+		_main
+ This function uses a non-reentrant model
+
+
+ *************** function _alarm_init *****************
+ Defined at:
+		line 23 in file "alarm.c"
+ Parameters:    Size  Location     Type
+		None
+ Auto vars:     Size  Location     Type
+		None
+ Return value:  Size  Location     Type
+                  1    wreg      void 
+ Registers used:
+		wreg, fsr0l, fsr0h, status,2, status,0, pclath, cstack
+ Tracked objects:
+		On entry : 
+		On exit  : 
+		Unchanged: 
+ Data sizes:     COMMON   BANK0
+      Params:         0       0
+      Locals:         0       0
+      Temps:          0       0
+      Totals:         0       0
+Total ram usage:        0 bytes
+ Hardware stack levels used:    1
+ Hardware stack levels required when called:    2
+ This function calls:
+		_avControl
+ This function is called by:
+		_main
+ This function uses a non-reentrant model
+
+
+ *************** function _avControl *****************
+ Defined at:
+		line 26 in file "audioVisual.c"
+ Parameters:    Size  Location     Type
+  item            1    wreg     unsigned char 
+  mode            1    4[BANK0 ] unsigned char 
+ Auto vars:     Size  Location     Type
+  item            1    6[BANK0 ] unsigned char 
+  c               1    7[BANK0 ] PTR struct avControlStru
+		 -> avc(8), 
+ Return value:  Size  Location     Type
+                  1    wreg      unsigned char 
+ Registers used:
+		wreg, fsr0l, fsr0h, status,2, status,0
+ Tracked objects:
+		On entry : 
+		On exit  : 
+		Unchanged: 
+ Data sizes:     COMMON   BANK0
+      Params:         0       1
+      Locals:         0       2
+      Temps:          0       1
+      Totals:         0       4
+Total ram usage:        4 bytes
+ Hardware stack levels used:    1
+ Hardware stack levels required when called:    1
+ This function calls:
+		Nothing
+ This function is called by:
+		_alarm_init
+		_alarm_task
+		_av_control_task_init
+ This function uses a non-reentrant model
+
+
  *************** function _IntVector *****************
  Defined at:
-		line 51 in file "main.c"
+		line 56 in file "main.c"
  Parameters:    Size  Location     Type
 		None
  Auto vars:     Size  Location     Type
   ii              1    3[BANK0 ] PTR unsigned char 
-		 -> crtos2TaskTimer(1), 
+		 -> crtos2TaskTimer(3), 
  Return value:  Size  Location     Type
                   1    wreg      void 
  Registers used:
@@ -359,18 +798,41 @@ MODULE INFORMATION
 
 Module		Function		Class		Link	Load	Size
 shared
-		__initialization		CODE           	000E	0000	3
+		__initialization		CODE           	000E	0000	8
 
-shared estimated size: 3
+shared estimated size: 8
+
+opParam.c
+		_opSetMainAlarmByValue		CODE           	017D	0000	29
+		_set_threshold_task		CODE           	014F	0000	27
+		_opSetMainAlarmFromCapture		CODE           	0169	0000	21
+		_opSetMainAlarmFromEE		CODE           	0199	0000	26
+		_opSetAlarmSamplingFromEE		CODE           	01B2	0000	6
+
+opParam.c estimated size: 109
+
+alarm.c
+		_alarm_init    		CODE           	013A	0000	22
+		_alarm_task    		CODE           	00CB	0000	112
+
+alarm.c estimated size: 134
+
+EE12F675.c
+		_DATAEE_WriteByte		CODE           	0267	0000	18
+		_DATAEE_ReadByte		CODE           	0280	0000	7
+
+EE12F675.c estimated size: 25
+
+audioVisual.c
+		_av_control_task_init		CODE           	0017	0000	6
+		_avControl     		CODE           	007A	0000	82
+		_av_control_task		CODE           	001C	0000	95
+
+audioVisual.c estimated size: 183
 
 main.c
-		_main          		CODE           	0012	0000	57
-		_IntVector     		CODE           	004A	0000	34
+		_main          		CODE           	0218	0000	80
+		_IntVector     		CODE           	01B7	0000	98
 
-main.c estimated size: 91
-
-task0.c
-		_task0         		CODE           	006B	0000	19
-
-task0.c estimated size: 19
+main.c estimated size: 178
 

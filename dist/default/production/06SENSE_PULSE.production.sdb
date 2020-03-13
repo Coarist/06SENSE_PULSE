@@ -3,28 +3,86 @@
 [d edition pro ]
 [d chip 12F675 ]
 [d frameptr 6 ]
-"10 D:\Program Files (x86)\Microchip\xc8\v1.42\sources\common\sprcadd.c
+"23 F:\Users\chi\Documents\MicrochipMplabProjects\06SENSE_PULSE\alarm.c
+[v _alarm_init alarm_init `(v  1 e 1 0 ]
+"32
+[v _alarm_task alarm_task `(uc  1 e 1 0 ]
+"26 F:\Users\chi\Documents\MicrochipMplabProjects\06SENSE_PULSE\audioVisual.c
+[v _avControl avControl `(uc  1 e 1 0 ]
+"59
+[v _av_control_task_init av_control_task_init `(v  1 e 1 0 ]
+"71
+[v _av_control_task av_control_task `(uc  1 e 1 0 ]
+"21 F:\Users\chi\Documents\MicrochipMplabProjects\06SENSE_PULSE\EE12F675.c
+[v _DATAEE_WriteByte DATAEE_WriteByte `(v  1 e 1 0 ]
+"27
+[v _DATAEE_ReadByte DATAEE_ReadByte `(uc  1 e 1 0 ]
+"10 F:\ProgramFilesx86\Microchip\xc8\v1.43\sources\common\sprcadd.c
 [v ___fladd __fladd `(d  1 e 4 0 ]
-"4 D:\Program Files (x86)\Microchip\xc8\v1.42\sources\common\Umul8_16.c
+"4 F:\ProgramFilesx86\Microchip\xc8\v1.43\sources\common\Umul8_16.c
 [v __Umul8_16 _Umul8_16 `(ui  1 e 2 0 ]
-"6 D:\Program Files (x86)\Microchip\xc8\v1.42\sources\pic\eeprom.c
+"6 F:\ProgramFilesx86\Microchip\xc8\v1.43\sources\pic\eeprom.c
 [v _eecpymem eecpymem `(v  1 e 1 0 ]
 "39
 [v _memcpyee memcpyee `(v  1 e 1 0 ]
-"51 F:\Documents\MPLabX\06SENSE_PULSE\main.c
+"56 F:\Users\chi\Documents\MicrochipMplabProjects\06SENSE_PULSE\main.c
 [v _IntVector IntVector `II(v  1 e 1 0 ]
-"70
+"143
 [v _main main `(v  1 e 1 0 ]
-"20 F:\Documents\MPLabX\06SENSE_PULSE\task0.c
-[v _task0 task0 `(uc  1 e 1 0 ]
-"13 F:\Documents\MPLabX\06SENSE_PULSE\CRTOS2.c
-[v _crtos2TaskTimer crtos2TaskTimer `VE[1]uc  1 e 1 0 ]
-"70 D:\Program Files (x86)\Microchip\xc8\v1.42\include\pic12f675.h
+"46 F:\Users\chi\Documents\MicrochipMplabProjects\06SENSE_PULSE\opParam.c
+[v _opSetMainAlarmFromCapture opSetMainAlarmFromCapture `(v  1 e 1 0 ]
+"55
+[v _opSetPre_AlarmByValue opSetPre_AlarmByValue `(v  1 e 1 0 ]
+"69
+[v _opSetMainAlarmByValue opSetMainAlarmByValue `(v  1 e 1 0 ]
+"98
+[v _opSetMainAlarmFromEE opSetMainAlarmFromEE `(v  1 e 1 0 ]
+"115
+[v _opSetAlarmSamplingFromEE opSetAlarmSamplingFromEE `(v  1 e 1 0 ]
+"123
+[v _set_threshold_task set_threshold_task `(uc  1 e 1 0 ]
+"18 F:\Users\chi\Documents\MicrochipMplabProjects\06SENSE_PULSE\alarm.c
+[v _pAlarmLevel pAlarmLevel `ul  1 e 4 0 ]
+"19
+[v _mAlarmLevel mAlarmLevel `ul  1 e 4 0 ]
+"20
+[v _sampleInterval sampleInterval `uc  1 e 1 0 ]
+"21
+[v _samplingCount samplingCount `uc  1 s 1 samplingCount ]
+[s S147 avControlStruct 4 `uc 1 t0 1 0 `uc 1 t1 1 1 `uc 1 count 1 2 `uc 1 onOff 1 3 ]
+"15 F:\Users\chi\Documents\MicrochipMplabProjects\06SENSE_PULSE\audioVisual.c
+[v _avc avc `[2]S147  1 s 8 avc ]
+"13 F:\Users\chi\Documents\MicrochipMplabProjects\06SENSE_PULSE\CRTOS2.c
+[v _crtos2TaskTimer crtos2TaskTimer `VE[3]uc  1 e 3 0 ]
+"70 F:\ProgramFilesx86\Microchip\xc8\v1.43\include\pic12f675.h
 [v _TMR0 TMR0 `VEuc  1 e 1 @1 ]
 "216
 [v _GPIO GPIO `VEuc  1 e 1 @5 ]
 "324
 [v _INTCON INTCON `VEuc  1 e 1 @11 ]
+[s S292 . 1 `uc 1 GPIF 1 0 :1:0 
+`uc 1 INTF 1 0 :1:1 
+`uc 1 T0IF 1 0 :1:2 
+`uc 1 GPIE 1 0 :1:3 
+`uc 1 INTE 1 0 :1:4 
+`uc 1 T0IE 1 0 :1:5 
+`uc 1 PEIE 1 0 :1:6 
+`uc 1 GIE 1 0 :1:7 
+]
+"347
+[s S301 . 1 `uc 1 . 1 0 :2:0 
+`uc 1 TMR0IF 1 0 :1:2 
+`uc 1 . 1 0 :2:3 
+`uc 1 TMR0IE 1 0 :1:5 
+]
+[u S306 . 1 `S292 1 . 1 0 `S301 1 . 1 0 ]
+[v _INTCONbits INTCONbits `VES306  1 e 1 @11 ]
+"457
+[v _TMR1L TMR1L `VEuc  1 e 1 @14 ]
+"477
+[v _TMR1H TMR1H `VEuc  1 e 1 @15 ]
+"497
+[v _T1CON T1CON `VEuc  1 e 1 @16 ]
 "562
 [v _CMCON CMCON `VEuc  1 e 1 @25 ]
 "725
@@ -35,39 +93,156 @@
 [v _WPU WPU `VEuc  1 e 1 @149 ]
 "1032
 [v _IOC IOC `VEuc  1 e 1 @150 ]
+"1266
+[v _EEDATA EEDATA `VEuc  1 e 1 @154 ]
+"1304
+[v _EEADR EEADR `VEuc  1 e 1 @155 ]
+[s S279 . 1 `uc 1 RD 1 0 :1:0 
+`uc 1 WR 1 0 :1:1 
+`uc 1 WREN 1 0 :1:2 
+`uc 1 WRERR 1 0 :1:3 
+]
+"1337
+[u S284 . 1 `S279 1 . 1 0 ]
+[v _EECON1bits EECON1bits `VES284  1 e 1 @156 ]
+"1362
+[v _EECON2 EECON2 `VEuc  1 e 1 @157 ]
 "1402
 [v _ANSEL ANSEL `VEuc  1 e 1 @159 ]
+"1539
+[v _GIE GIE `VEb  1 e 0 @95 ]
 "1561
 [v _GPIF GPIF `VEb  1 e 0 @88 ]
-"1579
-[v _INTF INTF `VEb  1 e 0 @89 ]
+"1565
+[v _GPIO1 GPIO1 `VEb  1 e 0 @41 ]
+"1567
+[v _GPIO2 GPIO2 `VEb  1 e 0 @42 ]
+"1571
+[v _GPIO4 GPIO4 `VEb  1 e 0 @44 ]
+"1573
+[v _GPIO5 GPIO5 `VEb  1 e 0 @45 ]
 "1625
 [v _T0IE T0IE `VEb  1 e 0 @93 ]
 "1627
 [v _T0IF T0IF `VEb  1 e 0 @90 ]
 "1649
 [v _TMR1IE TMR1IE `VEb  1 e 0 @1120 ]
+"1651
+[v _TMR1IF TMR1IF `VEb  1 e 0 @96 ]
 "1653
 [v _TMR1ON TMR1ON `VEb  1 e 0 @128 ]
-"13 F:\Documents\MPLabX\06SENSE_PULSE\task0.c
+"45 F:\Users\chi\Documents\MicrochipMplabProjects\06SENSE_PULSE\main.c
+[v _tmr1Hi16 tmr1Hi16 `VEul  1 s 4 tmr1Hi16 ]
+"46
+[v _tmr1Overflowed32 tmr1Overflowed32 `VEuc  1 e 1 0 ]
+[s S20 . 4 `uc 1 C0 1 0 `uc 1 C1 1 1 `uc 1 C2 1 2 `uc 1 C3 1 3 ]
+"51
+[s S25 . 4 `ui 1 W0 2 0 `ui 1 W1 2 2 ]
+[u S28 uinteger32 4 `ul 1 value 4 0 `S20 1 bytes 4 0 `S25 1 words 4 0 ]
+[v _pulseInterval pulseInterval `VES28  1 e 4 0 ]
+"121 F:\Users\chi\Documents\MicrochipMplabProjects\06SENSE_PULSE\opParam.c
 [v _i i `uc  1 s 1 i ]
-"70 F:\Documents\MPLabX\06SENSE_PULSE\main.c
+"143 F:\Users\chi\Documents\MicrochipMplabProjects\06SENSE_PULSE\main.c
 [v _main main `(v  1 e 1 0 ]
 {
-"97
-[v main@i i `uc  1 a 1 5 ]
-[v main@t t `uc  1 a 1 4 ]
-"120
+"186
+[v main@i i `uc  1 a 1 15 ]
+"187
+[v main@t t `uc  1 a 1 14 ]
+"212
 } 0
-"20 F:\Documents\MPLabX\06SENSE_PULSE\task0.c
-[v _task0 task0 `(uc  1 e 1 0 ]
+"123 F:\Users\chi\Documents\MicrochipMplabProjects\06SENSE_PULSE\opParam.c
+[v _set_threshold_task set_threshold_task `(uc  1 e 1 0 ]
 {
-"45
+"138
 } 0
-"51 F:\Documents\MPLabX\06SENSE_PULSE\main.c
+"46
+[v _opSetMainAlarmFromCapture opSetMainAlarmFromCapture `(v  1 e 1 0 ]
+{
+"48
+[v opSetMainAlarmFromCapture@x x `ul  1 a 4 10 ]
+"54
+} 0
+"69
+[v _opSetMainAlarmByValue opSetMainAlarmByValue `(v  1 e 1 0 ]
+{
+[v opSetMainAlarmByValue@x x `ul  1 p 4 6 ]
+"77
+} 0
+"21 F:\Users\chi\Documents\MicrochipMplabProjects\06SENSE_PULSE\EE12F675.c
+[v _DATAEE_WriteByte DATAEE_WriteByte `(v  1 e 1 0 ]
+{
+[v DATAEE_WriteByte@bAdd bAdd `uc  1 a 1 wreg ]
+[v DATAEE_WriteByte@bAdd bAdd `uc  1 a 1 wreg ]
+[v DATAEE_WriteByte@bData bData `uc  1 p 1 4 ]
+"23
+[v DATAEE_WriteByte@bAdd bAdd `uc  1 a 1 5 ]
+"25
+} 0
+"98 F:\Users\chi\Documents\MicrochipMplabProjects\06SENSE_PULSE\opParam.c
+[v _opSetMainAlarmFromEE opSetMainAlarmFromEE `(v  1 e 1 0 ]
+{
+[s S20 . 4 `uc 1 C0 1 0 `uc 1 C1 1 1 `uc 1 C2 1 2 `uc 1 C3 1 3 ]
+"100
+[s S25 . 4 `ui 1 W0 2 0 `ui 1 W1 2 2 ]
+[u S28 uinteger32 4 `ul 1 value 4 0 `S20 1 bytes 4 0 `S25 1 words 4 0 ]
+[v opSetMainAlarmFromEE@x x `S28  1 a 4 5 ]
+"107
+} 0
+"115
+[v _opSetAlarmSamplingFromEE opSetAlarmSamplingFromEE `(v  1 e 1 0 ]
+{
+"119
+} 0
+"27 F:\Users\chi\Documents\MicrochipMplabProjects\06SENSE_PULSE\EE12F675.c
+[v _DATAEE_ReadByte DATAEE_ReadByte `(uc  1 e 1 0 ]
+{
+[v DATAEE_ReadByte@bAdd bAdd `uc  1 a 1 wreg ]
+[v DATAEE_ReadByte@bAdd bAdd `uc  1 a 1 wreg ]
+"29
+[v DATAEE_ReadByte@bAdd bAdd `uc  1 a 1 4 ]
+"32
+} 0
+"59 F:\Users\chi\Documents\MicrochipMplabProjects\06SENSE_PULSE\audioVisual.c
+[v _av_control_task_init av_control_task_init `(v  1 e 1 0 ]
+{
+"66
+} 0
+"71
+[v _av_control_task av_control_task `(uc  1 e 1 0 ]
+{
+"123
+} 0
+"32 F:\Users\chi\Documents\MicrochipMplabProjects\06SENSE_PULSE\alarm.c
+[v _alarm_task alarm_task `(uc  1 e 1 0 ]
+{
+"36
+[v alarm_task@x x `ul  1 a 4 8 ]
+"61
+} 0
+"23
+[v _alarm_init alarm_init `(v  1 e 1 0 ]
+{
+"30
+} 0
+"26 F:\Users\chi\Documents\MicrochipMplabProjects\06SENSE_PULSE\audioVisual.c
+[v _avControl avControl `(uc  1 e 1 0 ]
+{
+[v avControl@item item `uc  1 a 1 wreg ]
+[s S147 avControlStruct 4 `uc 1 t0 1 0 `uc 1 t1 1 1 `uc 1 count 1 2 `uc 1 onOff 1 3 ]
+"29
+[v avControl@c c `*.4S147  1 a 1 7 ]
+"26
+[v avControl@item item `uc  1 a 1 wreg ]
+[v avControl@mode mode `uc  1 p 1 4 ]
+"28
+[v avControl@item item `uc  1 a 1 6 ]
+"57
+} 0
+"56 F:\Users\chi\Documents\MicrochipMplabProjects\06SENSE_PULSE\main.c
 [v _IntVector IntVector `II(v  1 e 1 0 ]
 {
-"56
+"61
 [v IntVector@ii ii `*.4uc  1 a 1 3 ]
-"65
+"138
 } 0

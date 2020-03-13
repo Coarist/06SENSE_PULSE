@@ -1,20 +1,20 @@
 
 # 1 "main.c"
 
-# 26 "D:\Program Files (x86)\Microchip\xc8\v1.42\include\htc.h"
+# 26 "F:\ProgramFilesx86\Microchip\xc8\v1.43\include\htc.h"
 extern const char __xc8_OPTIM_SPEED;
 
 extern double __fpnormalize(double);
 
 
-# 13 "D:\Program Files (x86)\Microchip\xc8\v1.42\include\xc8debug.h"
+# 13 "F:\ProgramFilesx86\Microchip\xc8\v1.43\include\xc8debug.h"
 #pragma intrinsic(__builtin_software_breakpoint)
 extern void __builtin_software_breakpoint(void);
 
-# 9 "D:\Program Files (x86)\Microchip\xc8\v1.42\include\pic.h"
+# 9 "F:\ProgramFilesx86\Microchip\xc8\v1.43\include\pic.h"
 extern unsigned char __osccal_val(void);
 
-# 50 "D:\Program Files (x86)\Microchip\xc8\v1.42\include\pic12f675.h"
+# 50 "F:\ProgramFilesx86\Microchip\xc8\v1.43\include\pic12f675.h"
 extern volatile unsigned char INDF @ 0x000;
 
 asm("INDF equ 00h");
@@ -843,7 +843,7 @@ extern volatile __bit nT1SYNC @ (((unsigned) &T1CON)*8) + 2;
 extern volatile __bit nTO @ (((unsigned) &STATUS)*8) + 4;
 
 
-# 27 "D:\Program Files (x86)\Microchip\xc8\v1.42\include\pic.h"
+# 27 "F:\ProgramFilesx86\Microchip\xc8\v1.43\include\pic.h"
 #pragma intrinsic(__nop)
 extern void __nop(void);
 
@@ -853,14 +853,14 @@ extern unsigned int flash_read(unsigned short addr);
 # 141
 extern void flash_erase(unsigned short addr);
 
-# 114 "D:\Program Files (x86)\Microchip\xc8\v1.42\include\eeprom_routines.h"
+# 114 "F:\ProgramFilesx86\Microchip\xc8\v1.43\include\eeprom_routines.h"
 extern void eeprom_write(unsigned char addr, unsigned char value);
 extern unsigned char eeprom_read(unsigned char addr);
 extern void eecpymem(volatile unsigned char *to, __eeprom unsigned char *from, unsigned char size);
 extern void memcpyee(__eeprom unsigned char *to, const unsigned char *from, unsigned char size);
 
 
-# 151 "D:\Program Files (x86)\Microchip\xc8\v1.42\include\pic.h"
+# 151 "F:\ProgramFilesx86\Microchip\xc8\v1.43\include\pic.h"
 #pragma intrinsic(_delay)
 extern __nonreentrant void _delay(unsigned long);
 #pragma intrinsic(_delaywdt)
@@ -872,7 +872,7 @@ extern __bit __powerdown;
 extern __bit __timeout;
 
 
-# 34 "DeviceConfig.h"
+# 35 "DeviceConfig.h"
 #pragma config FOSC = INTRCIO
 #pragma config WDTE = ON
 #pragma config PWRTE = ON
@@ -881,61 +881,79 @@ extern __bit __timeout;
 #pragma config CP = ON
 #pragma config CPD = OFF
 
-# 13 "D:\Program Files (x86)\Microchip\xc8\v1.42\include\stdint.h"
+# 13 "F:\ProgramFilesx86\Microchip\xc8\v1.43\include\stdint.h"
 typedef signed char int8_t;
 
 # 20
 typedef signed int int16_t;
 
-# 38
+# 28
+typedef signed short long int int24_t;
+
+# 36
 typedef signed long int int32_t;
 
-# 45
+# 43
 typedef unsigned char uint8_t;
 
-# 51
+# 49
 typedef unsigned int uint16_t;
 
-# 67
+# 56
+typedef unsigned short long int uint24_t;
+
+# 63
 typedef unsigned long int uint32_t;
 
-# 75
+# 71
 typedef signed char int_least8_t;
 
-# 82
+# 78
 typedef signed int int_least16_t;
 
-# 104
+# 90
+typedef signed short long int int_least24_t;
+
+# 98
 typedef signed long int int_least32_t;
 
-# 111
+# 105
 typedef unsigned char uint_least8_t;
 
-# 117
+# 111
 typedef unsigned int uint_least16_t;
 
-# 136
+# 121
+typedef unsigned short long int uint_least24_t;
+
+# 128
 typedef unsigned long int uint_least32_t;
 
-# 145
+# 137
 typedef signed char int_fast8_t;
 
-# 152
+# 144
 typedef signed int int_fast16_t;
 
-# 174
+# 156
+typedef signed short long int int_fast24_t;
+
+# 164
 typedef signed long int int_fast32_t;
 
-# 181
+# 171
 typedef unsigned char uint_fast8_t;
 
-# 187
+# 177
 typedef unsigned int uint_fast16_t;
 
-# 206
+# 187
+typedef unsigned short long int uint_fast24_t;
+
+# 194
 typedef unsigned long int uint_fast32_t;
 
-# 212
+# 200
 typedef int32_t intmax_t;
 
 
@@ -990,17 +1008,55 @@ uint16_t W0; uint16_t W1;
 }
 uinteger32_t;
 
-# 26 "main.c"
+# 12 "F:\ProgramFilesx86\Microchip\xc8\v1.43\include\stdbool.h"
+typedef unsigned char bool;
+
+# 16 "alarm.h"
+void alarm_init(void);
+CRTOS2_T_TIMER alarm_task(void);
+
+extern uint32_t pAlarmLevel;
+extern uint32_t mAlarmLevel;
+extern uint8_t sampleInterval;
+
+# 38 "audioVisual.h"
+typedef struct avControlStruct
+{
+uint8_t t0;
+uint8_t t1;
+uint8_t count;
+bool onOff;
+}
+avControlStruct_t;
+
+bool avControl(uint8_t item, uint8_t mode);
+void av_control_task_init(void);
+CRTOS2_T_TIMER av_control_task(void);
+
+# 32 "opParam.h"
+void opSetPre_AlarmByValue(uint32_t);
+void opSetPre_AlarmFromCapture(void);
+void opSetMainAlarmByValue(uint32_t);
+void opSetMainAlarmFromCapture(void);
+void opZeroAllAlarmLevels(void);
+void opSetPre_AlarmFromEE(void);
+void opSetMainAlarmFromEE(void);
+void opSetAlarmSamplingInterval(uint8_t);
+void opSetAlarmSamplingFromEE(void);
+
+CRTOS2_T_TIMER set_threshold_task(void);
+
+# 31 "main.c"
 __config("__IDLOC7", "pic", 'p', 'u', 'l', 's');
 
-# 40
-CRTOS2_T_TIMER task0(void);
+# 45
+static volatile uint32_t tmr1Hi16;
+volatile bool tmr1Overflowed32 = 0;
 
 
 
 
-uinteger32_t t;
-static uint32_t x;
+volatile uinteger32_t pulseInterval;
 
 
 
@@ -1010,12 +1066,73 @@ void interrupt IntVector( void )
 if (T0IF)
 {
 TMR0 -= (125);
-{ unsigned char *ii = crtos2TaskTimer; while (ii < &crtos2TaskTimer[(1)]) { if(*ii){--*ii;} ++ii; } };
+{ unsigned char *ii = (unsigned char*)crtos2TaskTimer; while (ii < &crtos2TaskTimer[(3)]) { if(*ii){--*ii;} ++ii; } };
 T0IF = 0;
 }
 
-# 64
-INTF = GPIF = 0;
+
+
+if (TMR1IF)
+{
+if(++tmr1Hi16==0) {tmr1Overflowed32=1;}
+TMR1IF = 0;
+}
+
+
+
+if (GPIF)
+{
+
+
+
+(GPIO5) = 0;
+
+
+
+
+GPIF = 0;
+
+
+
+TMR1ON = 0;
+
+
+
+pulseInterval.bytes.C1 = TMR1H;
+pulseInterval.bytes.C0 = TMR1L;
+TMR1H = 0;
+TMR1L = 0;
+
+
+
+TMR1ON = 1;
+
+
+
+
+if (TMR1IF)
+{
+if(++tmr1Hi16==0) {tmr1Overflowed32=1;}
+TMR1IF =0;
+}
+
+
+
+if (tmr1Overflowed32)
+{
+pulseInterval.value = (4294967295UL);
+tmr1Overflowed32 = 0;
+}
+else
+{
+pulseInterval.words.W1 = tmr1Hi16;
+}
+
+# 128
+tmr1Hi16 = 0;
+}
+
+# 138
 }
 
 
@@ -1027,20 +1144,32 @@ void main(void)
 
 
 OPTION_REG = (0b01111111) & (0b11010010);
+GIE = 0;
 
-# 81
+# 155
 GPIO = 0b00000000;
 CMCON = 0b00000111;
 ANSEL = 0b00000000;
-TRISIO = (0b00100001);
-WPU = (0b00100000);
+TRISIO = (0b00100011);
+WPU = (0b00100010);
 IOC = (0b00100000);
+T1CON = (0b00000000);
+
+# 168
+TMR1ON = TMR1IE = 1;
+
+
+
+
+av_control_task_init();
+alarm_init();
+opSetMainAlarmFromEE();
+opSetAlarmSamplingFromEE();
 
 
 
 
 INTCON = 0x20 | 0x80 | 0x40;
-TMR1ON = TMR1IE = 1;
 
 
 
@@ -1054,7 +1183,7 @@ CRTOS2_T_TIMER t;
 for(;;)
 {
 asm("clrwdt");
-{if((++i)>=(1)){i=0;}};
+{if((++i)>=(3)){i=0;}};
 { T0IE = 0; t = crtos2TaskTimer[(i)]; T0IE = 1; };
 
 if (t) {continue;}
@@ -1063,9 +1192,12 @@ switch(i)
 
 
 
-case 0: t = task0(); break;
+case 0: t = alarm_task(); break;
+case 1: t = av_control_task(); break;
+case 2: t = set_threshold_task(); break;
 default: continue;
 }
+
 { T0IE = 0; crtos2TaskTimer[(i)] = t; T0IE = 1; };
 }
 }
