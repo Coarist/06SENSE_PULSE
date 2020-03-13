@@ -51,7 +51,7 @@ CRTOS2_T_TIMER __section("alarm") alarm_task(void)
     }
     else
     {
-        if (tmr1Overflowed32)
+        if (tmr1Overflowed32 || (x > 2000000))
             {avControl(LED_INTERNAL_RED, AV_OFF);} 
         else
             {avControl(LED_INTERNAL_RED, AV_PSL);}

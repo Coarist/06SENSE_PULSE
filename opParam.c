@@ -9,6 +9,10 @@
 #include "xc.h"
 #include "opParam.h"
 #include "alarm.h"
+#include "EE12F675.h"
+#include "main.h"
+#include "CRTOS2.h"
+#include "DeviceConfig.h"
 
 //-----------------------------------------------------------------------------
 // Compiler directives (XC8) to initialize EEPROM upon programming. Use this
@@ -21,10 +25,9 @@
 //-----------------------------------------------------------------------------
 __EEPROM_DATA(0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00);
 //-----------------------------------------------------------------------------
-// 0x32 == dec 50 x 10ms sampling interval, DAC control byte is left-shifted 3
-// bits, 0x10>>3 == 0x02 corresponds to 2.75 volts Hi-Lo threshold. 
+// 0x32 == dec 50 x 10ms sampling interval.
 //-----------------------------------------------------------------------------
-__EEPROM_DATA(0x32,0x10,0xFF,0xFF,0xFF,0xFF,0xFF,0xFF);
+__EEPROM_DATA(0x32,0xFF,0xFF,0xFF,0xFF,0xFF,0xFF,0xFF);
 
 //-----------------------------------------------------------------------------
 // Functions that take a snapshot sample of the current pulse period and apply
@@ -33,12 +36,20 @@ __EEPROM_DATA(0x32,0x10,0xFF,0xFF,0xFF,0xFF,0xFF,0xFF);
 //-----------------------------------------------------------------------------
 void __section("opParam") opSetPre_AlarmFromCapture(void)
 {
-    opSetPre_AlarmByValue(getPulsePeriod24());
+    uint32_t x;
+    GIE = 0;
+    x = pulseInterval.value;
+    GIE = 1;
+    opSetPre_AlarmByValue(x);
     return;
 }
 void __section("opParam") opSetMainAlarmFromCapture(void)
 {
-    opSetMainAlarmByValue(getPulsePeriod24());
+    uint32_t x;
+    GIE = 0;
+    x = pulseInterval.value;
+    GIE = 1;
+    opSetMainAlarmByValue(x);
     return;
 }
 void __section("opParam") opSetPre_AlarmByValue(uint32_t x)
@@ -107,29 +118,23 @@ void __section("opParam") opSetAlarmSamplingFromEE(void)
     return;
 };
 
-void __section("opParam") opSetCmpVoltThresholdByValue(uint8_t x)
-{
-    VREFCON2 = (x >> 3);
-    DATAEE_WriteByte(EA_CMPVTH, x);
-    return;
-};
+static uint8_t i = 0;
 
-void __section("opParam") opSetCmpVoltThresholdFromEE(void)
+CRTOS2_T_TIMER __section("opParam") set_threshold_task(void)
 {
-    VREFCON2 = (DATAEE_ReadByte(EA_CMPVTH) >> 3);
-    return;
-};
-
-//void __section("s_name") name_of__task(void)
-//{
-//    task_open();
-//    for(;;) {
-//
-//    }
-//    //---------------------------------------------------------------
-//    // Control will never fall beyond this point
-//    //---------------------------------------------------------------
-//    task_close();
-//}
+    switch(i)
+    {
+        case 0: goto T3L0; break;
+        case 1: goto T3L1; break;
+        default: i = 0; return 100; break;
+    }
+    //---------------------------------------------------------------
+    T3L0: if ( SET_BUTTON) {return 100;}  //---------- wait key press
+    ++i;
+    opSetMainAlarmFromCapture();
+    T3L1: if (!SET_BUTTON) {return 100;} //--------- wait key release
+    i = 0;
+    return 100;
+}
 
 //----------------------------------------------------------------- end of file

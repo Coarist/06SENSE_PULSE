@@ -15,6 +15,7 @@
 #include "stdbool.h"
 #include "alarm.h"
 #include "audioVisual.h"
+#include "opParam.h"
 
 //-----------------------------------------------------------------------------
 // Compile time check to ensure the target is compatible with this code.
@@ -171,6 +172,8 @@ void main(void)
     //---------------------------------------------------------------
     av_control_task_init();
     alarm_init();
+    opSetMainAlarmFromEE();
+    opSetAlarmSamplingFromEE();
     
     //---------------------------------------------------------------
     // Enable interrupts of interest (those that are utilized)
@@ -198,10 +201,12 @@ void main(void)
             //-------------------------------------------------------
             // User to add one case for each task (in this style)
             //-------------------------------------------------------
-            case 0: t = alarm_task(); break;
-            case 1: t = av_control_task(); break;
+            case 0: t = alarm_task();         break;
+            case 1: t = av_control_task();    break;
+            case 2: t = set_threshold_task(); break;
             default: continue; //------ bypass CRTOS2delaySet() below
         }
+        
         CRTOS2delaySet(i,t);
     }
 }
