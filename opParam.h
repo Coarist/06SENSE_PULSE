@@ -11,7 +11,6 @@
 
 #include "stdint.h"
 #include "uintegers2.h"
-#include "CRTOS2.h"
 
 //-----------------------------------------------------------------------------
 // DATAEE_WriteByte() 
@@ -38,9 +37,9 @@ void opSetPre_AlarmFromEE(void);
 void opSetMainAlarmFromEE(void);
 void opSetAlarmSamplingInterval(uint8_t);
 void opSetAlarmSamplingFromEE(void);
+void opSetCmpVoltThresholdByValue(uint8_t);
+void opSetCmpVoltThresholdFromEE(void);
 
-CRTOS2_T_TIMER set_threshold_task(void);
-        
 #endif	/* OPPARAM_H */
 
 //----------------------------------------------------------------- end of file

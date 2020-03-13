@@ -8,29 +8,19 @@ Version 3.2 HI-TECH Software Intermediate Code
 "75
 [u S85 `ul 1 `S86 1 `S87 1 ]
 [n S85 uinteger32 value bytes words ]
-"1627 F:\ProgramFilesx86\Microchip\xc8\v1.43\include\pic12f675.h
+"1627 D:\Program Files (x86)\Microchip\xc8\v1.42\include\pic12f675.h
 [v _T0IF `Vb ~T0 @X0 0 e@90 ]
 "70
 [v _TMR0 `Vuc ~T0 @X0 0 e@1 ]
 "74 CRTOS2.h
 [v _crtos2TaskTimer `Vuc ~T0 @X0 -> 0 `x e ]
-"1651 F:\ProgramFilesx86\Microchip\xc8\v1.43\include\pic12f675.h
-[v _TMR1IF `Vb ~T0 @X0 0 e@96 ]
+"1579 D:\Program Files (x86)\Microchip\xc8\v1.42\include\pic12f675.h
+[v _INTF `Vb ~T0 @X0 0 e@89 ]
 "1561
 [v _GPIF `Vb ~T0 @X0 0 e@88 ]
-"1573
-[v _GPIO5 `Vb ~T0 @X0 0 e@45 ]
-"1653
-[v _TMR1ON `Vb ~T0 @X0 0 e@128 ]
-"477
-[v _TMR1H `Vuc ~T0 @X0 0 e@15 ]
-"457
-[v _TMR1L `Vuc ~T0 @X0 0 e@14 ]
 [p mainexit ]
 "725
 [v _OPTION_REG `Vuc ~T0 @X0 0 e@129 ]
-"1539
-[v _GIE `Vb ~T0 @X0 0 e@95 ]
 "216
 [v _GPIO `Vuc ~T0 @X0 0 e@5 ]
 "562
@@ -43,34 +33,22 @@ Version 3.2 HI-TECH Software Intermediate Code
 [v _WPU `Vuc ~T0 @X0 0 e@149 ]
 "1032
 [v _IOC `Vuc ~T0 @X0 0 e@150 ]
-"497
-[v _T1CON `Vuc ~T0 @X0 0 e@16 ]
+"324
+[v _INTCON `Vuc ~T0 @X0 0 e@11 ]
+"1653
+[v _TMR1ON `Vb ~T0 @X0 0 e@128 ]
 "1649
 [v _TMR1IE `Vb ~T0 @X0 0 e@1120 ]
-"48 audioVisual.h
-[v _av_control_task_init `(v ~T0 @X0 0 ef ]
-"16 alarm.h
-[v _alarm_init `(v ~T0 @X0 0 ef ]
-"38 opParam.h
-[v _opSetMainAlarmFromEE `(v ~T0 @X0 0 ef ]
-"40
-[v _opSetAlarmSamplingFromEE `(v ~T0 @X0 0 ef ]
-"324 F:\ProgramFilesx86\Microchip\xc8\v1.43\include\pic12f675.h
-[v _INTCON `Vuc ~T0 @X0 0 e@11 ]
 "1625
 [v _T0IE `Vb ~T0 @X0 0 e@93 ]
-"17 alarm.h
-[v _alarm_task `(uc ~T0 @X0 0 ef ]
-"49 audioVisual.h
-[v _av_control_task `(uc ~T0 @X0 0 ef ]
-"42 opParam.h
-[v _set_threshold_task `(uc ~T0 @X0 0 ef ]
+"40 main.c
+[v _task0 `(uc ~T0 @X0 0 ef ]
 [; ;htc.h: 26: extern const char __xc8_OPTIM_SPEED;
 [; ;htc.h: 28: extern double __fpnormalize(double);
 [; ;xc8debug.h: 14: extern void __builtin_software_breakpoint(void);
 [; ;pic.h: 9: extern unsigned char __osccal_val(void);
 [; ;pic12f675.h: 50: extern volatile unsigned char INDF @ 0x000;
-"52 F:\ProgramFilesx86\Microchip\xc8\v1.43\include\pic12f675.h
+"52 D:\Program Files (x86)\Microchip\xc8\v1.42\include\pic12f675.h
 [; ;pic12f675.h: 52: asm("INDF equ 00h");
 [; <" INDF equ 00h ;# ">
 [; ;pic12f675.h: 55: typedef union {
@@ -693,48 +671,42 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;pic.h: 192: extern unsigned char __resetbits;
 [; ;pic.h: 193: extern __bit __powerdown;
 [; ;pic.h: 194: extern __bit __timeout;
-"35 DeviceConfig.h
+"34 DeviceConfig.h
 [p x FOSC=INTRCIO ]
-"36
+"35
 [p x WDTE=ON ]
-"37
+"36
 [p x PWRTE=ON ]
-"38
+"37
 [p x MCLRE=OFF ]
-"39
+"38
 [p x BOREN=ON ]
-"40
+"39
 [p x CP=ON ]
-"41
+"40
 [p x CPD=OFF ]
 [; ;stdint.h: 13: typedef signed char int8_t;
 [; ;stdint.h: 20: typedef signed int int16_t;
-[; ;stdint.h: 28: typedef signed short long int int24_t;
-[; ;stdint.h: 36: typedef signed long int int32_t;
-[; ;stdint.h: 43: typedef unsigned char uint8_t;
-[; ;stdint.h: 49: typedef unsigned int uint16_t;
-[; ;stdint.h: 56: typedef unsigned short long int uint24_t;
-[; ;stdint.h: 63: typedef unsigned long int uint32_t;
-[; ;stdint.h: 71: typedef signed char int_least8_t;
-[; ;stdint.h: 78: typedef signed int int_least16_t;
-[; ;stdint.h: 90: typedef signed short long int int_least24_t;
-[; ;stdint.h: 98: typedef signed long int int_least32_t;
-[; ;stdint.h: 105: typedef unsigned char uint_least8_t;
-[; ;stdint.h: 111: typedef unsigned int uint_least16_t;
-[; ;stdint.h: 121: typedef unsigned short long int uint_least24_t;
-[; ;stdint.h: 128: typedef unsigned long int uint_least32_t;
-[; ;stdint.h: 137: typedef signed char int_fast8_t;
-[; ;stdint.h: 144: typedef signed int int_fast16_t;
-[; ;stdint.h: 156: typedef signed short long int int_fast24_t;
-[; ;stdint.h: 164: typedef signed long int int_fast32_t;
-[; ;stdint.h: 171: typedef unsigned char uint_fast8_t;
-[; ;stdint.h: 177: typedef unsigned int uint_fast16_t;
-[; ;stdint.h: 187: typedef unsigned short long int uint_fast24_t;
-[; ;stdint.h: 194: typedef unsigned long int uint_fast32_t;
-[; ;stdint.h: 200: typedef int32_t intmax_t;
-[; ;stdint.h: 205: typedef uint32_t uintmax_t;
-[; ;stdint.h: 210: typedef int16_t intptr_t;
-[; ;stdint.h: 215: typedef uint16_t uintptr_t;
+[; ;stdint.h: 38: typedef signed long int int32_t;
+[; ;stdint.h: 45: typedef unsigned char uint8_t;
+[; ;stdint.h: 51: typedef unsigned int uint16_t;
+[; ;stdint.h: 67: typedef unsigned long int uint32_t;
+[; ;stdint.h: 75: typedef signed char int_least8_t;
+[; ;stdint.h: 82: typedef signed int int_least16_t;
+[; ;stdint.h: 104: typedef signed long int int_least32_t;
+[; ;stdint.h: 111: typedef unsigned char uint_least8_t;
+[; ;stdint.h: 117: typedef unsigned int uint_least16_t;
+[; ;stdint.h: 136: typedef unsigned long int uint_least32_t;
+[; ;stdint.h: 145: typedef signed char int_fast8_t;
+[; ;stdint.h: 152: typedef signed int int_fast16_t;
+[; ;stdint.h: 174: typedef signed long int int_fast32_t;
+[; ;stdint.h: 181: typedef unsigned char uint_fast8_t;
+[; ;stdint.h: 187: typedef unsigned int uint_fast16_t;
+[; ;stdint.h: 206: typedef unsigned long int uint_fast32_t;
+[; ;stdint.h: 212: typedef int32_t intmax_t;
+[; ;stdint.h: 217: typedef uint32_t uintmax_t;
+[; ;stdint.h: 222: typedef int16_t intptr_t;
+[; ;stdint.h: 227: typedef uint16_t uintptr_t;
 [; ;CRTOS2.h: 68: typedef unsigned char CRTOS2_TASK_ID;
 [; ;CRTOS2.h: 69: typedef unsigned char CRTOS2_T_TIMER;
 [; ;CRTOS2.h: 74: extern volatile CRTOS2_T_TIMER crtos2TaskTimer[];
@@ -762,351 +734,185 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;uintegers2.h: 83: } words;
 [; ;uintegers2.h: 84: }
 [; ;uintegers2.h: 85: uinteger32_t;
-[; ;stdbool.h: 12: typedef unsigned char bool;
-[; ;alarm.h: 16: void alarm_init(void);
-[; ;alarm.h: 17: CRTOS2_T_TIMER alarm_task(void);
-[; ;alarm.h: 19: extern uint32_t pAlarmLevel;
-[; ;alarm.h: 20: extern uint32_t mAlarmLevel;
-[; ;alarm.h: 21: extern uint8_t sampleInterval;
-[; ;audioVisual.h: 38: typedef struct avControlStruct
-[; ;audioVisual.h: 39: {
-[; ;audioVisual.h: 40: uint8_t t0;
-[; ;audioVisual.h: 41: uint8_t t1;
-[; ;audioVisual.h: 42: uint8_t count;
-[; ;audioVisual.h: 43: bool onOff;
-[; ;audioVisual.h: 44: }
-[; ;audioVisual.h: 45: avControlStruct_t;
-[; ;audioVisual.h: 47: bool avControl(uint8_t item, uint8_t mode);
-[; ;audioVisual.h: 48: void av_control_task_init(void);
-[; ;audioVisual.h: 49: CRTOS2_T_TIMER av_control_task(void);
-[; ;opParam.h: 32: void opSetPre_AlarmByValue(uint32_t);
-[; ;opParam.h: 33: void opSetPre_AlarmFromCapture(void);
-[; ;opParam.h: 34: void opSetMainAlarmByValue(uint32_t);
-[; ;opParam.h: 35: void opSetMainAlarmFromCapture(void);
-[; ;opParam.h: 36: void opZeroAllAlarmLevels(void);
-[; ;opParam.h: 37: void opSetPre_AlarmFromEE(void);
-[; ;opParam.h: 38: void opSetMainAlarmFromEE(void);
-[; ;opParam.h: 39: void opSetAlarmSamplingInterval(uint8_t);
-[; ;opParam.h: 40: void opSetAlarmSamplingFromEE(void);
-[; ;opParam.h: 42: CRTOS2_T_TIMER set_threshold_task(void);
-"31 main.c
+"26 main.c
 [p x IDLOC0=0x70 ]
 [p x IDLOC1=0x75 ]
 [p x IDLOC2=0x6C ]
 [p x IDLOC3=0x73 ]
+[; ;main.c: 26: __config("__IDLOC7", "pic", 'p', 'u', 'l', 's');
+[; ;main.c: 40: CRTOS2_T_TIMER task0(void);
 "45
-[v _tmr1Hi16 `Vul ~T0 @X0 1 s ]
-[; ;main.c: 31: __config("__IDLOC7", "pic", 'p', 'u', 'l', 's');
-[; ;main.c: 45: static volatile uint32_t tmr1Hi16;
+[v _t `S85 ~T0 @X0 1 e ]
+[; ;main.c: 45: uinteger32_t t;
 "46
-[v _tmr1Overflowed32 `Vuc ~T0 @X0 1 e ]
-[i _tmr1Overflowed32
--> -> 0 `i `uc
-]
-[; ;main.c: 46: volatile bool tmr1Overflowed32 = 0;
-"51
-[v _pulseInterval `VS85 ~T0 @X0 1 e ]
-[; ;main.c: 51: volatile uinteger32_t pulseInterval;
+[v _x `ul ~T0 @X0 1 s ]
+[; ;main.c: 46: static uint32_t x;
 [v $root$_IntVector `(v ~T0 @X0 0 e ]
-[v F776 `(v ~T0 @X0 1 tf ]
-"56
-[v _IntVector `IF776 ~T0 @X0 1 e ]
-"57
+[v F730 `(v ~T0 @X0 1 tf ]
+"51
+[v _IntVector `IF730 ~T0 @X0 1 e ]
+"52
 {
-[; ;main.c: 56: void interrupt IntVector( void )
-[; ;main.c: 57: {
+[; ;main.c: 51: void interrupt IntVector( void )
+[; ;main.c: 52: {
 [e :U _IntVector ]
 [f ]
-[; ;main.c: 58: if (T0IF)
-"58
-[e $ ! _T0IF 90  ]
-[; ;main.c: 59: {
-"59
+[; ;main.c: 53: if (T0IF)
+"53
+[e $ ! _T0IF 89  ]
+[; ;main.c: 54: {
+"54
 {
-[; ;main.c: 60: TMR0 -= (125);
-"60
+[; ;main.c: 55: TMR0 -= (125);
+"55
 [e =- _TMR0 -> -> 125 `i `uc ]
-[; ;main.c: 61: { unsigned char *ii = (unsigned char*)crtos2TaskTimer; while (ii < &crtos2TaskTimer[(3)]) { if(*ii){--*ii;} ++ii; } };
-"61
+[; ;main.c: 56: { unsigned char *ii = crtos2TaskTimer; while (ii < &crtos2TaskTimer[(1)]) { if(*ii){--*ii;} ++ii; } };
+"56
 {
 [v _ii `*uc ~T0 @X0 1 a ]
 [e = _ii -> &U _crtos2TaskTimer `*uc ]
-[e $U 91  ]
-[e :U 92 ]
+[e $U 90  ]
+[e :U 91 ]
 {
-[e $ ! != -> *U _ii `i -> -> -> 0 `i `uc `i 94  ]
+[e $ ! != -> *U _ii `i -> -> -> 0 `i `uc `i 93  ]
 {
 [e =- *U _ii -> -> 1 `i `uc ]
 }
-[e :U 94 ]
+[e :U 93 ]
 [e =+ _ii * -> -> 1 `i `x -> -> # *U _ii `i `x ]
 }
-[e :U 91 ]
-[e $ < _ii -> &U *U + &U _crtos2TaskTimer * -> -> -> 3 `i `ui `ux -> -> # *U &U _crtos2TaskTimer `ui `ux `*uc 92  ]
-[e :U 93 ]
-}
-[; ;main.c: 62: T0IF = 0;
-"62
-[e = _T0IF -> -> 0 `i `b ]
-"63
-}
 [e :U 90 ]
-[; ;main.c: 63: }
-[; ;main.c: 67: if (TMR1IF)
-"67
-[e $ ! _TMR1IF 95  ]
-[; ;main.c: 68: {
-"68
-{
-[; ;main.c: 69: if(++tmr1Hi16==0) {tmr1Overflowed32=1;}
-"69
-[e $ ! == =+ _tmr1Hi16 -> -> -> 1 `i `l `ul -> -> -> 0 `i `l `ul 96  ]
-{
-[e = _tmr1Overflowed32 -> -> 1 `i `uc ]
+[e $ < _ii -> &U *U + &U _crtos2TaskTimer * -> -> -> 1 `i `ui `ux -> -> # *U &U _crtos2TaskTimer `ui `ux `*uc 91  ]
+[e :U 92 ]
 }
-[e :U 96 ]
-[; ;main.c: 70: TMR1IF = 0;
-"70
-[e = _TMR1IF -> -> 0 `i `b ]
-"71
+[; ;main.c: 57: T0IF = 0;
+"57
+[e = _T0IF -> -> 0 `i `b ]
+"58
 }
-[e :U 95 ]
-[; ;main.c: 71: }
-[; ;main.c: 75: if (GPIF)
-"75
-[e $ ! _GPIF 97  ]
-[; ;main.c: 76: {
-"76
-{
-[; ;main.c: 80: (GPIO5) = 0;
-"80
-[e = _GPIO5 -> -> 0 `i `b ]
-[; ;main.c: 85: GPIF = 0;
-"85
-[e = _GPIF -> -> 0 `i `b ]
-[; ;main.c: 89: TMR1ON = 0;
-"89
-[e = _TMR1ON -> -> 0 `i `b ]
-[; ;main.c: 93: pulseInterval.bytes.C1 = TMR1H;
-"93
-[e = . . _pulseInterval 1 1 _TMR1H ]
-[; ;main.c: 94: pulseInterval.bytes.C0 = TMR1L;
-"94
-[e = . . _pulseInterval 1 0 _TMR1L ]
-[; ;main.c: 95: TMR1H = 0;
-"95
-[e = _TMR1H -> -> 0 `i `uc ]
-[; ;main.c: 96: TMR1L = 0;
-"96
-[e = _TMR1L -> -> 0 `i `uc ]
-[; ;main.c: 100: TMR1ON = 1;
-"100
-[e = _TMR1ON -> -> 1 `i `b ]
-[; ;main.c: 105: if (TMR1IF)
-"105
-[e $ ! _TMR1IF 98  ]
-[; ;main.c: 106: {
-"106
-{
-[; ;main.c: 107: if(++tmr1Hi16==0) {tmr1Overflowed32=1;}
-"107
-[e $ ! == =+ _tmr1Hi16 -> -> -> 1 `i `l `ul -> -> -> 0 `i `l `ul 99  ]
-{
-[e = _tmr1Overflowed32 -> -> 1 `i `uc ]
-}
-[e :U 99 ]
-[; ;main.c: 108: TMR1IF =0;
-"108
-[e = _TMR1IF -> -> 0 `i `b ]
-"109
-}
-[e :U 98 ]
-[; ;main.c: 109: }
-[; ;main.c: 113: if (tmr1Overflowed32)
-"113
-[e $ ! != -> _tmr1Overflowed32 `i -> -> -> 0 `i `Vuc `i 100  ]
-[; ;main.c: 114: {
-"114
-{
-[; ;main.c: 115: pulseInterval.value = (4294967295UL);
-"115
-[e = . _pulseInterval 0 -> -1 `ul ]
-[; ;main.c: 116: tmr1Overflowed32 = 0;
-"116
-[e = _tmr1Overflowed32 -> -> 0 `i `uc ]
-"117
-}
-[; ;main.c: 117: }
-[e $U 101  ]
-"118
-[e :U 100 ]
-[; ;main.c: 118: else
-[; ;main.c: 119: {
-"119
-{
-[; ;main.c: 120: pulseInterval.words.W1 = tmr1Hi16;
-"120
-[e = . . _pulseInterval 2 1 -> _tmr1Hi16 `ui ]
-"121
-}
-[e :U 101 ]
-[; ;main.c: 121: }
-[; ;main.c: 128: tmr1Hi16 = 0;
-"128
-[e = _tmr1Hi16 -> -> -> 0 `i `l `ul ]
-"129
-}
-[e :U 97 ]
-[; ;main.c: 129: }
-[; ;main.c: 138: }
-"138
-[e :UE 89 ]
+[e :U 89 ]
+[; ;main.c: 58: }
+[; ;main.c: 64: INTF = GPIF = 0;
+"64
+[e = _INTF = _GPIF -> -> 0 `i `b ]
+[; ;main.c: 65: }
+"65
+[e :UE 88 ]
 }
 [v $root$_main `(v ~T0 @X0 0 e ]
-"143
+"70
 [v _main `(v ~T0 @X0 1 ef ]
-"144
+"71
 {
-[; ;main.c: 143: void main(void)
-[; ;main.c: 144: {
+[; ;main.c: 70: void main(void)
+[; ;main.c: 71: {
 [e :U _main ]
 [f ]
-[; ;main.c: 148: OPTION_REG = (0b01111111) & (0b11010010);
-"148
+[; ;main.c: 75: OPTION_REG = (0b01111111) & (0b11010010);
+"75
 [e = _OPTION_REG -> & -> 127 `i -> 210 `i `uc ]
-[; ;main.c: 149: GIE = 0;
-"149
-[e = _GIE -> -> 0 `i `b ]
-[; ;main.c: 155: GPIO = 0b00000000;
-"155
+[; ;main.c: 81: GPIO = 0b00000000;
+"81
 [e = _GPIO -> -> 0 `i `uc ]
-[; ;main.c: 156: CMCON = 0b00000111;
-"156
+[; ;main.c: 82: CMCON = 0b00000111;
+"82
 [e = _CMCON -> -> 7 `i `uc ]
-[; ;main.c: 157: ANSEL = 0b00000000;
-"157
+[; ;main.c: 83: ANSEL = 0b00000000;
+"83
 [e = _ANSEL -> -> 0 `i `uc ]
-[; ;main.c: 158: TRISIO = (0b00100011);
-"158
-[e = _TRISIO -> -> 35 `i `uc ]
-[; ;main.c: 159: WPU = (0b00100010);
-"159
-[e = _WPU -> -> 34 `i `uc ]
-[; ;main.c: 160: IOC = (0b00100000);
-"160
+[; ;main.c: 84: TRISIO = (0b00100001);
+"84
+[e = _TRISIO -> -> 33 `i `uc ]
+[; ;main.c: 85: WPU = (0b00100000);
+"85
+[e = _WPU -> -> 32 `i `uc ]
+[; ;main.c: 86: IOC = (0b00100000);
+"86
 [e = _IOC -> -> 32 `i `uc ]
-[; ;main.c: 161: T1CON = (0b00000000);
-"161
-[e = _T1CON -> -> 0 `i `uc ]
-[; ;main.c: 168: TMR1ON = TMR1IE = 1;
-"168
-[e = _TMR1ON = _TMR1IE -> -> 1 `i `b ]
-[; ;main.c: 173: av_control_task_init();
-"173
-[e ( _av_control_task_init ..  ]
-[; ;main.c: 174: alarm_init();
-"174
-[e ( _alarm_init ..  ]
-[; ;main.c: 175: opSetMainAlarmFromEE();
-"175
-[e ( _opSetMainAlarmFromEE ..  ]
-[; ;main.c: 176: opSetAlarmSamplingFromEE();
-"176
-[e ( _opSetAlarmSamplingFromEE ..  ]
-[; ;main.c: 181: INTCON = 0x20 | 0x80 | 0x40;
-"181
+[; ;main.c: 91: INTCON = 0x20 | 0x80 | 0x40;
+"91
 [e = _INTCON -> | | -> 32 `i -> 128 `i -> 64 `i `uc ]
-"186
+[; ;main.c: 92: TMR1ON = TMR1IE = 1;
+"92
+[e = _TMR1ON = _TMR1IE -> -> 1 `i `b ]
+"97
 [v _i `uc ~T0 @X0 1 a ]
-"187
 [v _t `uc ~T0 @X0 1 a ]
-[; ;main.c: 186: CRTOS2_TASK_ID i;
-[; ;main.c: 187: CRTOS2_T_TIMER t;
-[; ;main.c: 192: for(;;)
-"192
+[; ;main.c: 97: CRTOS2_TASK_ID i;
+[; ;main.c: 98: CRTOS2_T_TIMER t;
+[; ;main.c: 103: for(;;)
+"103
 {
-"193
-[e :U 103 ]
-[; ;main.c: 193: {
+"104
+[e :U 95 ]
+[; ;main.c: 104: {
 {
-[; ;main.c: 194: asm("clrwdt");
-"194
+[; ;main.c: 105: asm("clrwdt");
+"105
 [; <" clrwdt ;# ">
-[; ;main.c: 195: {if((++i)>=(3)){i=0;}};
-"195
+[; ;main.c: 106: {if((++i)>=(1)){i=0;}};
+"106
 {
-[e $ ! >= -> =+ _i -> -> 1 `i `uc `i -> 3 `i 106  ]
+[e $ ! >= -> =+ _i -> -> 1 `i `uc `i -> 1 `i 98  ]
 {
 [e = _i -> -> 0 `i `uc ]
 }
-[e :U 106 ]
+[e :U 98 ]
 }
-[; ;main.c: 196: { T0IE = 0; t = crtos2TaskTimer[(i)]; T0IE = 1; };
-"196
+[; ;main.c: 107: { T0IE = 0; t = crtos2TaskTimer[(i)]; T0IE = 1; };
+"107
 {
 [e = _T0IE -> -> 0 `i `b ]
 [e = _t *U + &U _crtos2TaskTimer * -> _i `ux -> -> # *U &U _crtos2TaskTimer `ui `ux ]
 [e = _T0IE -> -> 1 `i `b ]
 }
-[; ;main.c: 198: if (t) {continue;}
-"198
-[e $ ! != -> _t `i -> -> -> 0 `i `uc `i 107  ]
+[; ;main.c: 109: if (t) {continue;}
+"109
+[e $ ! != -> _t `i -> -> -> 0 `i `uc `i 99  ]
 {
-[e $U 105  ]
+[e $U 97  ]
 }
-[e :U 107 ]
-[; ;main.c: 199: switch(i)
-"199
-[e $U 109  ]
-[; ;main.c: 200: {
-"200
+[e :U 99 ]
+[; ;main.c: 110: switch(i)
+"110
+[e $U 101  ]
+[; ;main.c: 111: {
+"111
 {
-[; ;main.c: 204: case 0: t = alarm_task(); break;
-"204
-[e :U 110 ]
-[e = _t ( _alarm_task ..  ]
-[e $U 108  ]
-[; ;main.c: 205: case 1: t = av_control_task(); break;
-"205
-[e :U 111 ]
-[e = _t ( _av_control_task ..  ]
-[e $U 108  ]
-[; ;main.c: 206: case 2: t = set_threshold_task(); break;
-"206
-[e :U 112 ]
-[e = _t ( _set_threshold_task ..  ]
-[e $U 108  ]
-[; ;main.c: 207: default: continue;
-"207
-[e :U 113 ]
-[e $U 105  ]
-"208
+[; ;main.c: 115: case 0: t = task0(); break;
+"115
+[e :U 102 ]
+[e = _t ( _task0 ..  ]
+[e $U 100  ]
+[; ;main.c: 116: default: continue;
+"116
+[e :U 103 ]
+[e $U 97  ]
+"117
 }
-[; ;main.c: 208: }
-[e $U 108  ]
-"199
-[e :U 109 ]
-[e [\ _i , $ -> -> 0 `i `uc 110
- , $ -> -> 1 `i `uc 111
- , $ -> -> 2 `i `uc 112
- 113 ]
-"208
-[e :U 108 ]
-[; ;main.c: 210: { T0IE = 0; crtos2TaskTimer[(i)] = t; T0IE = 1; };
-"210
+[; ;main.c: 117: }
+[e $U 100  ]
+"110
+[e :U 101 ]
+[e [\ _i , $ -> -> 0 `i `uc 102
+ 103 ]
+"117
+[e :U 100 ]
+[; ;main.c: 118: { T0IE = 0; crtos2TaskTimer[(i)] = t; T0IE = 1; };
+"118
 {
 [e = _T0IE -> -> 0 `i `b ]
 [e = *U + &U _crtos2TaskTimer * -> _i `ux -> -> # *U &U _crtos2TaskTimer `ui `ux _t ]
 [e = _T0IE -> -> 1 `i `b ]
 }
-"211
+"119
 }
-[e :U 105 ]
-[; ;main.c: 211: }
-[e $U 103  ]
-[e :U 104 ]
+[e :U 97 ]
+[; ;main.c: 119: }
+[e $U 95  ]
+[e :U 96 ]
 }
-[; ;main.c: 212: }
-"212
-[e :UE 102 ]
+[; ;main.c: 120: }
+"120
+[e :UE 94 ]
 }

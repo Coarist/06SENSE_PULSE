@@ -17,7 +17,7 @@ extern "C" {
 //-----------------------------------------------------------------------------
 // Per task +1 byte RAM, +1 code word FLASH ROM
 //-----------------------------------------------------------------------------
-#define CRTOS2_NUMBER_TASKS (3)
+#define CRTOS2_NUMBER_TASKS (2)
     
 //-----------------------------------------------------------------------------
 // CRTOS2 uses TMR0 commonly available on PIC MCUs. There are two cases:

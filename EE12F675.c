@@ -20,14 +20,31 @@
 //-----------------------------------------------------------------------------
 void DATAEE_WriteByte(uint8_t bAdd, uint8_t bData)
 {
-    EE_WRITE_BYTE(bAdd, bData);
+    uint8_t GIEBitValue = INTCONbits.GIE;
+    
+    //---------------------------------------------------------------
+    // Special sequence: refer PIC12F675 data sheet
+    //---------------------------------------------------------------
+    EECON1bits.WREN = 1; //----------------------------- Enable write
+    INTCONbits.GIE = 0;  //----------------------- Disable interrupts
+    EECON2 = 0x55;
+    EECON2 = 0xAA;
+    EECON1bits.WR = 1;
+    EECON1bits.WREN = 0; //---------------- disable (safe-lock) write
+    INTCONbits.GIE = GIEBitValue; //-------- restore interrupt enable
     return;
 }
 
 uint8_t DATAEE_ReadByte(uint8_t bAdd)
 {
-    EEADR = bAdd;
+    EEADRH = ((bAdd >> 8) & 0x03);
+    EEADR = (bAdd & 0xFF);
+    EECON1bits.CFGS = 0;
+    EECON1bits.EEPGD = 0;
     EECON1bits.RD = 1;
+    NOP();  // NOPs may be required for latency at high frequencies
+    NOP();
+
     return (EEDATA);
 }
 

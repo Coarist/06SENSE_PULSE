@@ -47,7 +47,7 @@ extern "C" {
 // diagram "06aut358 Issue C Mods.pdf".
 //------------------------------------------------------------------------------
 #define ANALOG_VOLT  (AN0)    // GP0/AN0/CIN+/ICSPDAT                   (J2-P11)
-#define SET_BUTTON   (GPIO1)  // GP1/AN1/CIN-/VREF/ICSPCLK              (J2-P12)       
+#define SET_ALMLEVEL (GPIO1)  // GP1/AN1/CIN-/VREF/ICSPCLK              (J2-P12)       
 #define LED_INTERNAL (GPIO2)  // GP2/AN2/T0CLKI/INT/COUT
 #define NOT_USED_3   (GPIO3)  // GP3/MCLR/Vpp                           (J1-P05)
 #define OUTPUT_12V   (GPIO4)  // GP4/AN3/T1G/OSC2/CLKOUT      (*J1-P08, *J1-P09)
