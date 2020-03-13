@@ -3,12 +3,11 @@
 // Author: chi
 //
 // Created on February 21, 2020, 6:39 PM
+// Adapt from PIC18 BCBSP to PIC12 06SENSE_PULSE 13Mar2020
 //-----------------------------------------------------------------------------
 
 #include "xc.h"
 #include "opParam.h"
-#include "memory.h"
-#include "edgeDetect.h"
 #include "alarm.h"
 
 //-----------------------------------------------------------------------------

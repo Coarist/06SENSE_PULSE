@@ -3,12 +3,7 @@
 // Author: chi
 //
 // Created on February 21, 2020, 6:38 PM
-//-----------------------------------------------------------------------------
-// The PIC18F26K22 has 1024 bytes of individually addressable individually 
-// writable EEPROM. Representation of the 8-bit on-chip EEPROM address 
-// registers EEADR and EEADRH are expressed together as a single 16-bit
-// unsigned integer. For 1024 bytes, the address range is 0x0000 through to
-// 0x03FF. 
+// Adapt from PIC18 BCBSP to PIC12 06SENSE_PULSE 13Mar2020
 //-----------------------------------------------------------------------------
 
 #ifndef OPPARAM_H
@@ -16,14 +11,6 @@
 
 #include "stdint.h"
 #include "uintegers2.h"
-
-//-----------------------------------------------------------------------------         
-// Logging such as overspeed will ideally have date-time stamp which will need
-// real-time clock. 
-// - possibly events due to abrupt deceleration (hard braking)
-// - will require RTC
-// - will be logged to external IIC EEPROM
-//-----------------------------------------------------------------------------
 
 //-----------------------------------------------------------------------------
 // DATAEE_WriteByte() 
