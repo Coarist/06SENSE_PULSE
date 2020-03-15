@@ -20,7 +20,7 @@ extern "C" {
 
 bool isUartsTxReady(void);
 bool isUartsRxReady(void);
-bool uartsTxLoadByte(uint8_t);
+void uartsTxLoadByte(uint8_t);
 uint8_t uartsRxGetByte(void);
 CRTOS2_T_TIMER uarts_tx_state_machine(void);
 CRTOS2_T_TIMER uarts_rx_state_machine(void);

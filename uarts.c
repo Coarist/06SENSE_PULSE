@@ -37,9 +37,9 @@
 static uint8_t bitCountTx, dataByteTx;
 static uint8_t bitCountRx, dataByteRx;
 
-bool isUartsTxReady() {return (bitCountTx==0);}
-bool isUartsRxReady() {return (bitCountRx==0);}
-bool uartsTxLoadByte(uint8_t b) {dataByteTx = b; bitCountTx = 1;}
+bool isUartsTxReady() {return !bitCountTx;}
+bool isUartsRxReady() {return !bitCountRx;}
+void uartsTxLoadByte(uint8_t b) {dataByteTx = b; bitCountTx = 1;}
 uint8_t uartsRxGetByte(void) {bitCountRx = 1; return dataByteRx;}
 
 //-----------------------------------------------------------------------------

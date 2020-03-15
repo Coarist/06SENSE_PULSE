@@ -2,7 +2,7 @@
 // Project:  06SENSE_PULSE
 // File:     main.c
 // Author:   Coarist
-// Dates:    1105 Mar 2020
+// Dates:    05 Mar 2020
 // Compiler: Microchip XC8 (v1.42))
 // Target:   06SENSE PIC12F675 (MCC not supported)
 //-----------------------------------------------------------------------------
