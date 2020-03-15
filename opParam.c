@@ -98,6 +98,10 @@ void __section("opParam") opSetPre_AlarmFromEE(void)
 void __section("opParam") opSetMainAlarmFromEE(void)
 {
     uinteger32_t x;
+    //EE_READ_BYTE_FROM_EE_INTO_VAR(EA_MALARM+0,x.bytes.C0);
+    //EE_READ_BYTE_FROM_EE_INTO_VAR(EA_MALARM+1,x.bytes.C1);
+    //EE_READ_BYTE_FROM_EE_INTO_VAR(EA_MALARM+2,x.bytes.C2);
+    //EE_READ_BYTE_FROM_EE_INTO_VAR(EA_MALARM+3,x.bytes.C3);
     x.bytes.C0 = DATAEE_ReadByte(EA_MALARM+0);
     x.bytes.C1 = DATAEE_ReadByte(EA_MALARM+1);
     x.bytes.C2 = DATAEE_ReadByte(EA_MALARM+2);

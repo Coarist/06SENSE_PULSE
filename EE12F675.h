@@ -70,7 +70,7 @@ uint8_t DATAEE_ReadByte(uint8_t);
 
 #define EE_READ_BYTE_FROM_EE_INTO_SFR(a) \
 {                                        \
-    EEADR = a;                           \
+    EEADR = (a);                         \
     EECON1bits.RD = 1;                   \
 }
 

@@ -17,6 +17,7 @@
       <itemPath>opParam.h</itemPath>
       <itemPath>main.h</itemPath>
       <itemPath>EE12F675.h</itemPath>
+      <itemPath>uarts.h</itemPath>
     </logicalFolder>
     <logicalFolder name="LinkerScript"
                    displayName="Linker Files"
@@ -32,6 +33,7 @@
       <itemPath>audioVisual.c</itemPath>
       <itemPath>opParam.c</itemPath>
       <itemPath>EE12F675.c</itemPath>
+      <itemPath>uarts.c</itemPath>
     </logicalFolder>
     <logicalFolder name="ExternalFiles"
                    displayName="Important Files"
