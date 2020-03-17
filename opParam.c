@@ -122,23 +122,50 @@ void __section("opParam") opSetAlarmSamplingFromEE(void)
     return;
 };
 
+//-----------------------------------------------------------------------------
+// Due to up to 6 ms write time to EEPROM, this 'task' is implemented .
+//-----------------------------------------------------------------------------
 static uint8_t i = 0;
 
 CRTOS2_T_TIMER __section("opParam") set_threshold_task(void)
 {
+    static uinteger32_t x;
+    
     switch(i)
     {
-        case 0: goto T3L0; break;
-        case 1: goto T3L1; break;
+        case 0: goto SET_THRES_TASK_0; break;
+        case 1: goto SET_THRES_TASK_1; break;
+        case 2: goto SET_THRES_TASK_2; break;
+        case 3: goto SET_THRES_TASK_3; break;
+        case 4: goto SET_THRES_TASK_4; break;
+        case 5: goto SET_THRES_TASK_5; break;
         default: i = 0; return 100; break;
     }
     //---------------------------------------------------------------
-    T3L0: if ( SET_BUTTON) {return 100;}  //---------- wait key press
-    ++i;
-    opSetMainAlarmFromCapture();
-    T3L1: if (!SET_BUTTON) {return 100;} //--------- wait key release
-    i = 0;
-    return 100;
+    SET_THRES_TASK_0: 
+        if (SET_BUTTON) {return 100;}  //------------- wait key press
+        GIE = 0; x.value = pulseInterval.value; GIE = 1;
+        mAlarmLevel = x.value;
+        ++i;
+        DATAEE_WriteByte(EA_MALARM+0, x.bytes.C0);
+    SET_THRES_TASK_1:
+        if (EECON1bits.WR) {return 3;}
+        ++i;
+        DATAEE_WriteByte(EA_MALARM+1, x.bytes.C1);
+    SET_THRES_TASK_2:
+        if (EECON1bits.WR) {return 3;}
+        ++i;
+        DATAEE_WriteByte(EA_MALARM+2, x.bytes.C2);
+    SET_THRES_TASK_3:
+        if (EECON1bits.WR) {return 3;}
+        ++i;
+        DATAEE_WriteByte(EA_MALARM+3, x.bytes.C3);    
+    SET_THRES_TASK_4:
+        if (EECON1bits.WR) {return 3;}
+        ++i;
+    SET_THRES_TASK_5: //---------------------------- wait key release
+        if (!SET_BUTTON) {i = 0;}
+        return 100 - 24;
 }
 
 //----------------------------------------------------------------- end of file
