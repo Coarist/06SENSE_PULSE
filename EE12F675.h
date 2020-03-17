@@ -30,6 +30,13 @@ uint8_t DATAEE_ReadByte(uint8_t);
 // EECON1bits.WREN = 0; //--------- disable (safe-lock) write
 // INTCONbits.GIE = GIEBitValue; //- restore interrupt enable
 //-------------------------------------------------------------------
+// EEPROM TDEW Erase/Write cycle time can take up to 6 ms. 
+//-------------------------------------------------------------------
+// Consecutive write has to pull the EE Write Complete Interrupt Flag
+// bit (EEIF) is set (or enable this interrupt). The EEIF bit 
+// (PIR<7>) register must be cleared by software. Alternatively, the
+// WR bit will be cleared by hardware upon completion of write cycle.
+//-------------------------------------------------------------------
 
 #define EE_SPECIAL_UNLOCK_SEQ() \
 {                               \

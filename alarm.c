@@ -55,7 +55,7 @@ CRTOS2_T_TIMER __section("alarm") alarm_task(void)
             {avControl(LED_INTERNAL_RED, AV_OFF);} 
         else
             {avControl(LED_INTERNAL_RED, AV_PSL);}
-        avControl(  OUTPUT_SWITCH , AV_OFF);
+        avControl(OUTPUT_SWITCH, AV_OFF);
     }
     return 10; //----- number of OS ticks delay
 }
