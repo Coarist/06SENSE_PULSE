@@ -25,9 +25,9 @@
 //-----------------------------------------------------------------------------
 __EEPROM_DATA(0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00);
 //-----------------------------------------------------------------------------
-// 0x32 == dec 50 x 10ms sampling interval.
+// 0x0A == dec 10 x 10ms sampling interval.
 //-----------------------------------------------------------------------------
-__EEPROM_DATA(0x32,0xFF,0xFF,0xFF,0xFF,0xFF,0xFF,0xFF);
+__EEPROM_DATA(0x0A,0xFF,0xFF,0xFF,0xFF,0xFF,0xFF,0xFF);
 
 //-----------------------------------------------------------------------------
 // Functions that take a snapshot sample of the current pulse period and apply
@@ -164,8 +164,9 @@ CRTOS2_T_TIMER __section("opParam") set_threshold_task(void)
         if (EECON1bits.WR) {return 3;}
         ++i;
     SET_THRES_TASK_5: //---------------------------- wait key release
-        if (!SET_BUTTON) {i = 0;}
-        return 100 - 24;
+        if (!SET_BUTTON) {return 100;}
+        i = 0;
+        return 100;
 }
 
 //----------------------------------------------------------------- end of file

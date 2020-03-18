@@ -29,35 +29,55 @@ void __section("alarm") alarm_init(void)
     return;
 }
 
+//-----------------------------------------------------------------------------
+// Changed code to alarm at low frequency (large pulse period). Optimized for 
+// high execution efficiency. Also added multiple sampling to make alarm more
+// steady (user to feel the alarm is more deterministic)              18Mar2020
+//-----------------------------------------------------------------------------
 CRTOS2_T_TIMER __section("alarm") alarm_task(void)
 {
+    static uint8_t y;
+    uint32_t x;
+    static bool a;
+
     if(++samplingCount < sampleInterval) {return 10;} //---- OS delay
     samplingCount = 0;
-    uint32_t x;
     
     GIE=0;
     x = pulseInterval.value;
     GIE=1;
     
-    if (x < mAlarmLevel)
+    if (x > mAlarmLevel) 
     {
-        avControl(LED_INTERNAL_RED, AV_FUL);
-        avControl(  OUTPUT_SWITCH , AV_FUL);
-    }
-    else if (x < pAlarmLevel)
-    {
-        avControl(LED_INTERNAL_RED, AV_PSS);
-        avControl(  OUTPUT_SWITCH , AV_PRP);
+        if (!++y) {y = UINT8_MAX;}
     }
     else
     {
-        if (tmr1Overflowed32 || (x > 2000000))
-            {avControl(LED_INTERNAL_RED, AV_OFF);} 
-        else
-            {avControl(LED_INTERNAL_RED, AV_PSL);}
-        avControl(OUTPUT_SWITCH, AV_OFF);
+        y = 0;
     }
-    return 10; //----- number of OS ticks delay
+    
+    if (y > 3 && !a)
+    {
+        a = true;
+        avControl(LED_INTERNAL_RED, AV_FUL);
+        avControl(  OUTPUT_SWITCH , AV_FUL);
+    }
+    //else if (x < pAlarmLevel)
+    //{
+    //    avControl(LED_INTERNAL_RED, AV_PSS);
+    //    avControl(  OUTPUT_SWITCH , AV_PRP);
+    //}
+    else if (!y && a)
+    {
+        //if (tmr1Overflowed32 || (x > 2000000))
+        //    {avControl(LED_INTERNAL_RED, AV_OFF);} 
+        //else
+        //    {avControl(LED_INTERNAL_RED, AV_PSL);}
+        a = false;
+        avControl(LED_INTERNAL_RED, AV_PSL);
+        avControl(  OUTPUT_SWITCH , AV_OFF);
+    }
+    return 10; //--------------------------- number of OS ticks delay
 }
 
 //----------------------------------------------------------------- end of file
